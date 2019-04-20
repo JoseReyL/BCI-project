@@ -80,14 +80,14 @@ display_surface = pygame.display.set_mode((X, Y ))
 pygame.display.set_caption('Image') 
   
 # create a surface object, image is drawn on it. 
-up_arr      =  pygame.image.load('up_arrow.png')
-down_arr    =  pygame.image.load('down_arrow.png')
-left_arr    =  pygame.image.load('left_arrow.png')
-right_arr   =  pygame.image.load('right_arrow.png') 
+up_arr      =  pygame.image.load('icons/up_arrow.png')
+down_arr    =  pygame.image.load('icons/down_arrow.png')
+left_arr    =  pygame.image.load('icons/left_arrow.png')
+right_arr   =  pygame.image.load('icons/right_arrow.png') 
 
-tv        =  pygame.image.load('tv.png')
-phone     =  pygame.image.load('phone.png')
-navigate  =  pygame.image.load('wheel.png')
+tv        =  pygame.image.load('icons/tv.png')
+phone     =  pygame.image.load('icons/phone.png')
+navigate  =  pygame.image.load('icons/wheel.png')
 
 
 loop = True

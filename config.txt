@@ -1,0 +1,24 @@
+
+	'main icons'
+----------------------
+phone:icons/phone.png
+tv:icons/tv.png
+wheel:icons/wheel.png
+
+	'arrows'
+----------------------
+up_arrow:icons/up_arrow.png
+down_arrow:icons/down_arrow.png
+left_arrow:icons/left_arrow.png
+right_arrow:icons/right_arrow.png
+
+
+	'contacts'
+----------------------
+
+
+
+	'tv channels'
+----------------------
+
+

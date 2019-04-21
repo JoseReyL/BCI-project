@@ -90,30 +90,58 @@ phone     =  pygame.image.load('icons/phone.png')
 navigate  =  pygame.image.load('icons/wheel.png')
 
 
-loop = True
-
 left = 0 
 enter_pressed = False
+
 rec_color = (0,0,0)
 
+left_key = False
+right_key = False
+
 
 '''
-if not loop:
-        pygame.draw.circle(display_surface, (0,255,0,), (400,170), 100)  
+    pygame.draw.circle(display_surface, (0,255,0,), (400,170), 100)  
+    pygame.draw.circle(display_surface, (0,255,0,), (135,400), 100) 
+    pygame.draw.circle(display_surface, (0,255,0,), (400,630), 100) 
+    pygame.draw.circle(display_surface, (0,255,0,), (665,400), 100) 
 
-        pygame.draw.circle(display_surface, (0,255,0,), (135,400), 100) 
-
-        pygame.draw.circle(display_surface, (0,255,0,), (400,630), 100) 
-
-        pygame.draw.circle(display_surface, (0,255,0,), (665,400), 100) 
+    display_surface.blit(up_arr, (337,100)) 
+    display_surface.blit(down_arr, (,)) 
+    display_surface.blit(left_arr, (337,100)) 
+    display_surface.blit(right_arr, (337,100))
 '''
+
 
 
 # infinite loop 
 while True : 
 
+    ###   Navigation menu ###
     display_surface.fill(white) 
+    if left_key:
+        pygame.draw.circle(display_surface, (255,255,0,), (800,170), 100)  
+        pygame.draw.circle(display_surface, (255,255,0,), (535,400), 100) 
+        
+    if right_key:
+        pygame.draw.circle(display_surface, (255,255,0,), (800,630), 100) 
+        pygame.draw.circle(display_surface, (255,255,0,), (1065,400), 100) 
     
+    if left_key or right_key:
+        pygame.draw.line(display_surface, (0,0,0), (535,630), (1065,170), 8)
+
+    display_surface.blit(up_arr, (736,106)) 
+    display_surface.blit(left_arr, (471,336)) 
+    display_surface.blit(down_arr, (736,566)) 
+    display_surface.blit(right_arr, (1001,336))
+
+    #Needs some rethinking, because there's no way to get out
+
+    ###   Navigation Menu   ###
+
+
+
+    '''    
+    ###   Main Menu   ###
 
     if not enter_pressed: 
         rect_color = (255,255,0)
@@ -138,14 +166,8 @@ while True :
     display_surface.blit(phone, (672,272)) 
     display_surface.blit(navigate, (1028,272)) 
 
-    ''' 
-    display_surface.blit(up_arr, (337,100)) 
-    display_surface.blit(down_arr, (,)) 
-    display_surface.blit(left_arr, (337,100)) 
-    display_surface.blit(right_arr, (337,100))
+    ###   End Main Menu   ###
     '''
-
-  
 
     pygame.display.update()
 
@@ -167,8 +189,18 @@ while True :
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN :
-                print("Enter bar pressed down.")
+                print("Enter was pressed down.")
                 enter_pressed = True
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                print("Left pressed down.")
+                left_key = True
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                print("Right pressed down.")
+                right_key = True
 
         if event.type == pygame.QUIT : 
             pygame.quit() 

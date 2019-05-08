@@ -68,7 +68,7 @@ pygame.init()
 # for white colour 
 white = (255, 255, 255) 
   
-# assigning values to X and Y variable 
+# assigning values to X and Y variable (resolution)
 X = 1600
 Y = 800
   
@@ -93,7 +93,7 @@ navigate  =  pygame.image.load('icons/wheel.png')
 left = 0 
 enter_pressed = False
 
-rec_color = (0,0,0)
+rec_color = (0,0,0) # black
 
 left_key = False
 right_key = False

@@ -8,8 +8,17 @@ import pygame
 from time import sleep, time
 from random import shuffle
 
+# Add the buffer bits to the search path
+try:
+    pydir = os.path.dirname(__file__)
+except:
+    pydir = os.getcwd()
+sigProcPath = os.path.join(os.path.abspath(pydir), '../../python/signalProc')
+sys.path.append(sigProcPath)
+import bufhelp
 
-# add the buffer bits to the search path
+DEBUG = False  # True #
+
 
 def AAfilledRoundedRect(surface,rect,color,radius=0.4):
 
@@ -58,6 +67,7 @@ white = (255, 255, 255)
 yellow = (255, 255, 0)
 black = (0, 0, 0)
 green = (0, 255, 0)
+red = (255, 0, 0)
 
 X =1600
 Y = 800
@@ -98,15 +108,96 @@ def display_message():
     display_surface.fill(white)
     font = pygame.font.Font('freesansbold.ttf', 32)
     message = "Welcome to our imagined moved brain-computer interface! \n " \
-              + "Before you can fully enjoy the benefits of our interface, you need to calibrate the system \n" \
+              + "Before you can fully enjoy the benefits of our interface, we need to calibrate the system \n" \
               + "\n" \
               + "Following you will see a screen with a circle in the middle and two arrows (left and right) \n" \
-              + "When an arrow turns yellow, please, imagine you move the corresponding arm \n" \
+              + "First, the circle will turn red. This an indication for you to prepare. Then an arrow turns yellow, indicating that you need to imagine a movement from the corresponding arm \n" \
               + "\n" \
-              + "Press ENTER to start"
+              + "The following is an example of a request to imagine movement of your left hand"
 
     blit_text(display_surface, message, (20, 50), font, black)
     pygame.display.update()
+
+    pygame.draw.circle(display_surface, yellow, (535, 500), 100)
+    display_surface.blit(left_arr, (471, 436))
+    display_surface.blit(right_arr, (1001, 436))
+    pygame.draw.circle(display_surface, black, [X // 2, 500], 40)
+    pygame.display.flip()
+
+    message = "Press ENTER to start"
+    blit_text(display_surface, message, (1200, 670), font, black)
+    pygame.display.update()
+
+
+
+def initial_display():
+    display_surface.fill(white)
+    pygame.display.update()
+    display_surface.blit(left_arr, (471, 336))
+    display_surface.blit(right_arr, (1001, 336))
+    pygame.draw.circle(display_surface, black, [X // 2, Y // 2], 40)
+    pygame.display.flip()
+
+
+def run_calibration(nSequences, nBlock, trialDuration, intertrialDuration, baselineDuration):
+    # Display fixation circle and two arows (left and right)
+    initial_display()
+    # pygame.time.delay(intertrialDuration)
+
+    # make the target sequence
+    nSymbols = 2
+    targetSequence = list(range(nSymbols)) * int(nSequences / nSymbols + 1)  # sequence in sequential order
+    shuffle(targetSequence)  # N.B. shuffle works in-place!
+
+    # 0 - left, 1 -right
+    for target in targetSequence:
+        sleep(intertrialDuration)
+
+        # show the baseline
+        pygame.draw.circle(display_surface, red, [X // 2, Y // 2], 40)
+        pygame.display.update()
+        bufhelp.sendEvent('stimulus.baseline', 'start')
+        sleep(baselineDuration)
+        bufhelp.sendEvent('stimulus.baseline', 'end')
+
+       # initial_display()
+
+
+        # show the target
+
+        if target == 0:
+            pygame.draw.circle(display_surface, yellow, [X // 2, Y // 2], 40) # fixation yellow
+            pygame.draw.circle(display_surface, yellow, (535, 400), 100) # mark target
+            display_surface.blit(left_arr, (471, 336))
+            pygame.display.update()
+        else:
+            pygame.draw.circle(display_surface, yellow, [X // 2, Y // 2], 40)  # fixation yellow
+            pygame.draw.circle(display_surface, yellow, (1065, 400), 100) # mark target
+            display_surface.blit(right_arr, (1001, 336))
+            pygame.display.update()
+
+        bufhelp.sendEvent('stimulus.target', target)
+        bufhelp.sendEvent('stimulus.trial', 'start')
+
+        sleep(trialDuration)
+
+        # reset the display
+        initial_display()
+        bufhelp.sendEvent('stimulus.trial', 'end');
+
+
+# CONFIGURABLE VARIABLES EXPERIMENT
+
+verb = 0
+nSymbols = 2
+nSequences = 15
+nBlock = 2  # 10; # number of stim blocks to use
+trialDuration = 3
+baselineDuration = 1
+intertrialDuration = 2
+
+
+
 
 
 
@@ -116,162 +207,26 @@ clock = pygame.time.Clock()
 # Display instructions first:
 display_message()
 
-while not crashed:
+
+while True:
 
     clock.tick(10)
 
     for event in pygame.event.get():
         print(event)
         if event.type == pygame.QUIT:
-            crashed = True
+            pygame.quit()
+            quit()
         elif event.type == pygame.KEYDOWN:
             if event.key == 13: # this is ENTER
-                display_surface.fill(white)
-                pygame.display.update()
-                display_surface.blit(left_arr, (471, 336))
-                display_surface.blit(right_arr, (1001, 336))
-                pygame.draw.circle(display_surface, black, [X//2, Y//2], 40)
-                pygame.display.flip()
+                ftc, hdr = bufhelp.connect();
+                bufhelp.sendEvent('stimulus.training', 'start');
+                run_calibration(nSequences, nBlock, trialDuration, intertrialDuration, baselineDuration)
+                bufhelp.sendEvent('stimulus.training', 'end')
+
+
 
 
 
 pygame.quit()
 quit()
-
-
-'''
-try:
-    pydir = os.path.dirname(__file__)
-except:
-    pydir = os.getcwd()
-sigProcPath = os.path.join(os.path.abspath(pydir), '../../python/signalProc')
-sys.path.append(sigProcPath)
-import bufhelp
-
-DEBUG = False  # True #
-
-
-## HELPER FUNCTIONS
-def drawnow(fig=None):
-    "force a matplotlib figure to redraw itself, inside a compute loop"
-    if fig is None: fig = plt.gcf()
-    fig.canvas.draw()
-    plt.pause(1e-3)  # wait for draw.. 1ms
-
-
-currentKey = None
-
-
-def keypressFn(event):
-    "wait for keypress in a matplotlib figure, and store in the currentKey global"
-    global currentKey
-    currentKey = event.key
-
-
-def waitforkey(fig=None, reset=True, debug=DEBUG):
-    "wait for a key to be pressed in the given figure"
-    if debug: return
-    if fig is None: fig = gcf()
-    global currentKey
-    fig.canvas.mpl_connect('key_press_event', keypressFn)
-    if reset: currentKey = None
-    while currentKey is None:
-        plt.pause(1e-2)  # allow gui event processing
-
-
-## CONFIGURABLE VARIABLES
-verb = 0
-nSymbs = 2
-nSeq = 15
-nBlock = 2  # 10; # number of stim blocks to use
-trialDuration = 3
-baselineDuration = 1
-intertrialDuration = 2
-
-bgColor = (.5, .5, .5) # gray
-tgtColor = (0, 1, 0) # green
-fixColor = (1, 0, 0) # red
-txtColor = (1, 1, 1) # white
-
-# make the target sequence
-tgtSeq = list(range(nSymbs)) * int(nSeq / nSymbs + 1)  # sequence in sequential order
-shuffle(tgtSeq)  # N.B. shuffle works in-place!
-
-##--------------------- Start of the actual experiment loop ----------------------------------
-# set the display and the string for stimulus
-if DEBUG:
-    plt.switch_backend('agg')  # N.B. command to work in non-display mode
-fig = plt.figure(facecolor=(0, 0, 0))
-
-fig.suptitle('IM-Stimulus', fontsize=14, fontweight='bold', color=txtColor)
-ax = fig.add_subplot(111)  # default full-screen ax
-ax.set_xlim((-1.5, 1.5))
-ax.set_ylim((-1.5, 1.5))
-ax.set_axis_off()
-txthdl = ax.text(0, 0, 'This is some text', style='italic', color=txtColor)
-
-# setup the targets
-stimPos = [];
-hdls = [];
-stimRadius = .3;
-theta = np.linspace(0, np.pi, nSymbs)
-stimPos = np.stack((np.cos(theta), np.sin(theta))).T  # [nSymbs x 2]
-for hi, pos in enumerate(stimPos):  # N.B. enumerate goes over 1st dim if stimPos is array
-    print('%d) stimPos=(%f,%f)' % (hi, pos[0], pos[1]))
-    circ = patches.Circle(pos, stimRadius, facecolor=bgColor)
-    hhi = ax.add_patch(circ)
-    hdls.insert(hi, hhi)
-# add symbol for the center of the screen
-spos = np.array((0, 0))  # .reshape((1,-1))
-stimPos = np.vstack((stimPos, spos))  # [nSymbs+1 x 2]
-circ = patches.Circle((0, 0), stimRadius / 4, facecolor=bgColor)
-hhi = ax.add_patch(circ)
-hdls.insert(nSymbs, hhi)
-[_.set(visible=False) for _ in hdls]  # make all invisible
-
-## init connection to the buffer
-ftc, hdr = bufhelp.connect();
-
-# wait for key-press to continue
-[_.set(facecolor=bgColor) for _ in hdls]
-txthdl.set(text='Press key to start')
-drawnow()
-waitforkey(fig)
-txthdl.set(visible=False)
-
-# set stimuli to visible
-txthdl.set(visible=False)
-[_.set(facecolor=bgColor, visible=True) for _ in hdls]
-
-bufhelp.sendEvent('stimulus.training', 'start');
-## STARTING stimulus loop
-for si, tgt in enumerate(tgtSeq):
-    sleep(intertrialDuration)
-
-    # show the baseline
-    hdls[-1].set(facecolor=fixColor)  # fixation cross red
-    drawnow()
-    bufhelp.sendEvent('stimulus.baseline', 'start')
-    sleep(baselineDuration)
-    bufhelp.sendEvent('stimulus.baseline', 'end')
-
-    # show the target
-    print("%d) tgt=%d :" % (si, tgt))
-    hdls[-1].set(facecolor=tgtColor)  # target green
-    hdls[tgt].set(facecolor=tgtColor)  # fixation cross green
-    drawnow()
-    bufhelp.sendEvent('stimulus.target', tgt)
-    bufhelp.sendEvent('stimulus.trial', 'start')
-    sleep(trialDuration)
-
-    # reset the display
-    [_.set(facecolor=bgColor) for _ in hdls]
-    drawnow()
-    bufhelp.sendEvent('stimulus.trial', 'end');
-
-bufhelp.sendEvent('stimulus.training', 'end')
-[_.set(visible=False) for _ in hdls]  # hide all stimuli
-txthdl.set(text='Thanks for taking part!' '' 'Press key to finish', visible=True)
-drawnow()
-waitforkey(fig)
-'''

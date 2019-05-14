@@ -111,7 +111,9 @@ def display_message():
               + "Before you can fully enjoy the benefits of our interface, we need to calibrate the system \n" \
               + "\n" \
               + "Following you will see a screen with a circle in the middle and two arrows (left and right) \n" \
-              + "First, the circle will turn red. This an indication for you to prepare. Then an arrow turns yellow, indicating that you need to imagine a movement from the corresponding arm \n" \
+              + "First, the circle will turn red. This is an indication for you to prepare. Then an arrow turns yellow, indicating that you need to imagine a movement from the corresponding arm \n" \
+              + "\n" \
+              + "If both arrows are marked in yellow - you are asked to imagine movement of your both hands \n" \
               + "\n" \
               + "The following is an example of a request to imagine movement of your left hand"
 
@@ -128,6 +130,13 @@ def display_message():
     blit_text(display_surface, message, (1200, 670), font, black)
     pygame.display.update()
 
+def injectERP(amp=1,host="localhost",port=8300):
+    """Inject an erp into a simulated data-stream, sliently ignore if failed, e.g. because not simulated"""
+    import socket
+    try:
+        socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0).sendto(bytes(amp),(host,port))
+    except: # sliently igore any errors
+        pass
 
 
 def initial_display():
@@ -145,11 +154,11 @@ def run_calibration(nSequences, nBlock, trialDuration, intertrialDuration, basel
     # pygame.time.delay(intertrialDuration)
 
     # make the target sequence
-    nSymbols = 2
+    nSymbols = 3
     targetSequence = list(range(nSymbols)) * int(nSequences / nSymbols + 1)  # sequence in sequential order
     shuffle(targetSequence)  # N.B. shuffle works in-place!
 
-    # 0 - left, 1 -right
+    # 0 - left, 1 -right, 2 - both
     for target in targetSequence:
         sleep(intertrialDuration)
 
@@ -170,14 +179,22 @@ def run_calibration(nSequences, nBlock, trialDuration, intertrialDuration, basel
             pygame.draw.circle(display_surface, yellow, (535, 400), 100) # mark target
             display_surface.blit(left_arr, (471, 336))
             pygame.display.update()
-        else:
+        elif target ==1:
             pygame.draw.circle(display_surface, yellow, [X // 2, Y // 2], 40)  # fixation yellow
             pygame.draw.circle(display_surface, yellow, (1065, 400), 100) # mark target
             display_surface.blit(right_arr, (1001, 336))
             pygame.display.update()
+        else:
+            pygame.draw.circle(display_surface, yellow, [X // 2, Y // 2], 40)  # fixation yellow
+            pygame.draw.circle(display_surface, yellow, (535, 400), 100)  # mark target
+            pygame.draw.circle(display_surface, yellow, (1065, 400), 100)  # mark target
+            display_surface.blit(left_arr, (471, 336))
+            display_surface.blit(right_arr, (1001, 336))
+            pygame.display.update()
 
-        bufhelp.sendEvent('stimulus.target', target)
         bufhelp.sendEvent('stimulus.trial', 'start')
+        bufhelp.sendEvent('stimulus.target', target)
+        injectERP(amp=1)
 
         sleep(trialDuration)
 
@@ -190,7 +207,7 @@ def run_calibration(nSequences, nBlock, trialDuration, intertrialDuration, basel
 
 verb = 0
 nSymbols = 2
-nSequences = 15
+nSequences = 54 # a bit more data to be on the safe side
 nBlock = 2  # 10; # number of stim blocks to use
 trialDuration = 3
 baselineDuration = 1

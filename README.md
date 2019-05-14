@@ -9,3 +9,7 @@ I have been rethinking about the navigate interface signal system and I think it
 To accept any of those two options move both hands, and right hand to choose, both hands to accept again
 Left hand to move back
 I'm not sure if it's the best option because it takes 4 moves to make any selection, but otherwise it wouldnt allow to go back
+
+
+
+Note: Add CalibrateStim and CalibrateSignal into tutorial to make it work properly

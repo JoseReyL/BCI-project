@@ -167,5 +167,5 @@ while counter < exit_counter:
 
         print('counter',counter)
 
-
+print('CALIBRATION END')
 

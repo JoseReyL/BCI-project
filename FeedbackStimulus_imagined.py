@@ -127,10 +127,10 @@ def display_message():
     blit_text(display_surface, message, (20, 50), font, black)
     pygame.display.update()
 
-    pygame.draw.circle(display_surface, yellow, (535, 500), 100)
-    display_surface.blit(left_arr, (471, 436))
-    display_surface.blit(right_arr, (1001, 436))
-    pygame.draw.circle(display_surface, black, [X // 2, 500], 40)
+    pygame.draw.circle(display_surface, yellow, (535, 600), 100)
+    display_surface.blit(left_arr, (471, 536))
+    display_surface.blit(right_arr, (1001, 536))
+    pygame.draw.circle(display_surface, black, [X // 2, 600], 40)
     pygame.display.flip()
 
     message = "Press ENTER to start"

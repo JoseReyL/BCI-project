@@ -119,8 +119,8 @@ while True :
     ###   Navigation menu ###
     display_surface.fill(white) 
     if left_key:
-        pygame.draw.circle(display_surface, (255,255,0,), (800,170), 100)  
-        pygame.draw.circle(display_surface, (255,255,0,), (535,400), 100) 
+        pygame.draw.circle(display_surface, (255,255,0,), (800,170), 100)
+        pygame.draw.circle(display_surface, (255,255,0,), (535,400), 100)
         
     if right_key:
         pygame.draw.circle(display_surface, (255,255,0,), (800,630), 100) 

@@ -322,7 +322,11 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
-        elif event.type == pygame.KEYDOWN:
+        if event.type == pygame.VIDEORESIZE:
+            # There's some code to add back window content here.
+            surface = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+            pygame.display.update()
+        if event.type == pygame.KEYDOWN:
             if event.key == 13: # this is ENTER
                 ftc, hdr = bufhelp.connect();
                 bufhelp.sendEvent('stimulus.training', 'start');

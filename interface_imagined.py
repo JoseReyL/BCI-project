@@ -79,57 +79,25 @@ menu = {
 
 
 # draw original screen menu
-def initial_screen():
+def initial_screen(position):
     display_surface.fill(white)
-    pygame.draw.circle(display_surface, yellow, (200, Y // 2), 200)
+    if position == 1:
+        pygame.draw.circle(display_surface, yellow, (225, Y // 2), 200)
+    if position == 2:
+        pygame.draw.circle(display_surface, yellow, (625, Y // 2), 200)
+    if position == 3:
+        pygame.draw.circle(display_surface, yellow, (1025, Y // 2), 200)
+    if position == 4:
+        pygame.draw.circle(display_surface, yellow, (1400, Y // 2), 200)
+
     display_surface.blit(navigate, (100, Y // 2 - icon_height / 2))
     display_surface.blit(phone, (500, Y // 2 - icon_height / 2))
     display_surface.blit(tv, (900, Y // 2 - icon_height / 2))
     display_surface.blit(sos, (1280, Y // 2 - icon_height / 2))
     pygame.display.update()
 
-
-# draw navigation screen menu
-def navigation_screen():
-    display_surface.fill(white)
-    pygame.draw.circle(display_surface, yellow, (100 + icon_width // 2, Y // 2 - icon_height // 2), 200)
-    display_surface.blit(up_arr, (100, Y // 2 - icon_height))
-    display_surface.blit(down_arr, (500, Y // 2 - icon_height))
-    display_surface.blit(left_arr, (900, Y // 2 - icon_height))
-    display_surface.blit(right_arr, (1300, Y // 2 - icon_height))
-    display_surface.blit(home, (500, Y // 2 + icon_height // 4))
-    display_surface.blit(sos, (900, Y // 2 + icon_height // 4))
-    pygame.display.update()
-
-# draw sos screen
-def sos_screen():
-    display_surface.fill(white)
-    pygame.draw.circle(display_surface, yellow, (200, Y // 2), 200)
-    display_surface.blit(pain, (100, Y // 2 - icon_height / 2))
-    display_surface.blit(food, (500, Y // 2 - icon_height / 2))
-    display_surface.blit(wc, (900, Y // 2 - icon_height / 2))
-    display_surface.blit(home, (1280, Y // 2 - icon_height / 2))
-    pygame.display.update()
-
-# taken the initial screen, this function marks the selected icon
-def select_icon_initial_screen(position):
-    display_surface.fill(white)
-    if position == 1:
-        pygame.draw.circle(display_surface, yellow, (200, Y // 2), 200)
-    if position == 2:
-        pygame.draw.circle(display_surface, yellow, (600, Y // 2), 200)
-    if position == 3:
-        pygame.draw.circle(display_surface, yellow, (1025, Y // 2), 200)
-    if position == 4:
-        pygame.draw.circle(display_surface, yellow, (1400, Y // 2), 200)
-
-    display_surface.blit(navigate, (100, Y // 2 - navigate.get_rect().size[1] / 2))
-    display_surface.blit(phone, (500, Y // 2 - phone.get_rect().size[1] / 2))
-    display_surface.blit(tv, (900, Y // 2 - tv.get_rect().size[1] / 2))
-    display_surface.blit(sos, (1280, Y // 2 - sos.get_rect().size[1] / 2))
-    pygame.display.update()
-
-def select_icon_navigation_screen(position):
+# draw phone screen, call 1, call 2, call 3, home, sos
+def phone_tv_screen(position):
     display_surface.fill(white)
     if position == 1:
         pygame.draw.circle(display_surface, yellow, (100 + icon_width // 2, Y // 2 - icon_height // 2), 200)
@@ -140,9 +108,31 @@ def select_icon_navigation_screen(position):
     if position == 4:
         pygame.draw.circle(display_surface, yellow, (1300 + icon_width // 2, Y // 2 - icon_height // 2), 200)
     if position == 5:
-        pygame.draw.circle(display_surface, yellow, (500 + icon_width // 2, Y // 2 - icon_height // 8), 200)
+        pygame.draw.circle(display_surface, yellow, (X // 2, Y // 2 + icon_height // 2 + icon_height // 4), 200)
+
+    display_surface.blit(one, (100, Y // 2 - icon_height))
+    display_surface.blit(two, (500, Y // 2 - icon_height))
+    display_surface.blit(three, (900, Y // 2 - icon_height))
+    display_surface.blit(home, (1300, Y // 2 - icon_height))
+    display_surface.blit(sos, (X // 2 - icon_width // 2, Y // 2 + icon_height // 4))
+    pygame.display.update()
+
+# draw navigation screen menu
+def navigation_screen(position):
+    display_surface.fill(white)
+    if position == 1:
+        pygame.draw.circle(display_surface, yellow, (100 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+    if position == 2:
+        pygame.draw.circle(display_surface, yellow, (500 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+    if position == 3:
+        pygame.draw.circle(display_surface, yellow, (900 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+    if position == 4:
+        pygame.draw.circle(display_surface, yellow, (1300 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+    if position == 5:
+        pygame.draw.circle(display_surface, yellow, (500 + icon_width // 2, Y // 2 + icon_height//2 + icon_height//4), 200)
     if position == 6:
-        pygame.draw.circle(display_surface, yellow, (900 + icon_width // 2, Y // 2 - icon_height // 8), 200)
+        pygame.draw.circle(display_surface, yellow, (900 + icon_width // 2, Y // 2 + icon_height//2 + icon_height//4), 200)
+
     display_surface.blit(up_arr, (100, Y // 2 - icon_height))
     display_surface.blit(down_arr, (500, Y // 2 - icon_height))
     display_surface.blit(left_arr, (900, Y // 2 - icon_height))
@@ -150,36 +140,165 @@ def select_icon_navigation_screen(position):
     display_surface.blit(home, (500, Y // 2 + icon_height // 4))
     display_surface.blit(sos, (900, Y // 2 + icon_height // 4))
     pygame.display.update()
+
+# draw sos screen
+def sos_screen(position):
+    display_surface.fill(white)
+    if position == 1:
+        pygame.draw.circle(display_surface, yellow, (225, Y // 2), 200)
+    if position == 2:
+        pygame.draw.circle(display_surface, yellow, (625, Y // 2), 200)
+    if position == 3:
+        pygame.draw.circle(display_surface, yellow, (1025, Y // 2), 200)
+    if position == 4:
+        pygame.draw.circle(display_surface, yellow, (1400, Y // 2), 200)
+    display_surface.blit(pain, (100, Y // 2 - icon_height / 2))
+    display_surface.blit(food, (500, Y // 2 - icon_height / 2))
+    display_surface.blit(wc, (900, Y // 2 - icon_height / 2))
+    display_surface.blit(home, (1280, Y // 2 - icon_height / 2))
+    pygame.display.update()
+
+
+def select_icon_initial_screen(position, menu):
+    initial_screen(position)
+    while True:
+        for event in pygame.event.get():
+            if position > 4:
+                position = 1
+                initial_screen(position)
+            if position < 1:
+                position = 4
+                initial_screen(position)
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.KEYDOWN and event.key == 275:
+                position = position + 1
+                initial_screen(position)
+            if event.type == pygame.KEYDOWN and event.key == 276:
+                position = position - 1
+                initial_screen(position)
+            if event.type == pygame.KEYDOWN and event.key == 13:
+                if position == 1:
+                    menu = menu_dict(position, menu)
+                    menu_selecter(menu)
+                    break
+                if position == 2:
+                    menu = menu_dict(position, menu)
+                    menu_selecter(menu)
+                    break
+                if position == 3:
+                    menu = menu_dict(position, menu)
+                    menu_selecter(menu)
+                    break
+                if position == 4:
+                    menu = menu_dict(position, menu)
+                    menu_selecter(menu)
+                    break
+
+# phone and tv have the same screens
+def select_icon_phone_tv_screen(position, menu):
+    phone_tv_screen(position)
+    while True:
+        for event in pygame.event.get():
+            if position > 5:
+                position = 1
+                phone_screen(position)
+            if position < 1:
+                position = 5
+                phone_screen(position)
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.KEYDOWN and event.key == 275:
+                position = position + 1
+                phone_screen(position)
+            if event.type == pygame.KEYDOWN and event.key == 276:
+                position = position - 1
+                phone_screen(position)
+            if event.type == pygame.KEYDOWN and event.key == 13:
+                # if we select to go to home menu
+                if position == 4:
+                    menu = menu_dict(0, menu)
+                    menu_selecter(menu)
+                    break
+                # if we select to go to sos
+                if position == 5:
+                    menu = menu_dict(4, menu)
+                    menu_selecter(menu)
+                    break
+
+def select_icon_sos_screen(position, menu):
+    sos_screen(position)
+    while True:
+        for event in pygame.event.get():
+            if position > 4:
+                position = 1
+                sos_screen(position)
+            if position < 1:
+                position = 4
+                sos_screen(position)
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.KEYDOWN and event.key == 275:
+                position = position + 1
+                sos_screen(position)
+            if event.type == pygame.KEYDOWN and event.key == 276:
+                position = position - 1
+                sos_screen(position)
+            if event.type == pygame.KEYDOWN and event.key == 13:
+                # if we select to go to original menu
+                if position == 4:
+                    menu = menu_dict(0, menu)
+                    menu_selecter(menu)
+                    break
+
+
+def select_icon_navigation_screen(position, menu):
     navigation_screen(position)
-
-
-def navigate_navigation_screen(position):
-    for event in pygame.event.get():
-        # print(event)
-        if position > 6:
-            position = 1
-            select_icon_navigation_screen(position)
-        if position < 1:
-            position = 6
-            select_icon_navigation_screen(position)
-
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            quit()
-        # key 275 is right
-        if event.type == pygame.KEYDOWN and event.key == 275:
-            position = position + 1
-            select_icon_navigation_screen(position)
-        # key 276 is left
-        if event.type == pygame.KEYDOWN and event.key == 276:
-            position = position - 1
-            select_icon_navigation_screen(position)
+    navigation = True
+    while navigation:
+        for event in pygame.event.get():
+            # print(event)
+            if position > 6:
+                position = 1
+                navigation_screen(position)
+            if position < 1:
+                position = 6
+                navigation_screen(position)
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            # key 275 is right
+            if event.type == pygame.KEYDOWN and event.key == 275:
+                position = position + 1
+                navigation_screen(position)
+            # key 276 is left
+            if event.type == pygame.KEYDOWN and event.key == 276:
+                position = position - 1
+                navigation_screen(position)
+            if event.type == pygame.KEYDOWN and event.key == 13:
+                # if we select to return to home menu
+                if position == 5:
+                    menu = menu_dict(0, menu)
+                    menu_selecter(menu)
+                    navigation = False
+                # if sos is selected
+                if position == 6:
+                    menu = menu_dict(4, menu)
+                    menu_selecter(menu)
+                    navigation = False
 
 
 
 # updates the disctionary which says in which screen we are
 def menu_dict(position, menu):
     # enter navigation menu
+    if position ==0:
+        menu = {key: False for key in menu}
+        menu["home"] = True
+        menu.update(menu)
     if position == 1:
         menu = {key: False for key in menu}
         menu["navigation"] = True
@@ -200,11 +319,11 @@ def menu_dict(position, menu):
 
 # initiates the right menu
 def menu_selecter(menu):
-    if menu["home"] : initial_screen()
-    if menu["navigation"] : navigation_screen()
-    # if menu["phone"] : phone_screen()
-    # if menu["tv"] : tv_screen()
-    if menu["sos"] : sos_screen()
+    if menu["home"] : select_icon_initial_screen(1, menu)
+    if menu["navigation"] : select_icon_navigation_screen(1, menu)
+    if menu["phone"] : select_icon_phone_tv_screen(1, menu)
+    if menu["tv"] : select_icon_phone_tv_screen(1, menu)
+    if menu["sos"] : select_icon_sos_screen(1, menu)
 
 
 # activate the pygame library .
@@ -253,6 +372,11 @@ wc = pygame.image.load('icons/wc.png')
 # put this for going back:
 home = pygame.image.load('icons/house.png')
 
+# for phone and tv:
+one = pygame.image.load('icons/one.png')
+two = pygame.image.load('icons/two.png')
+three = pygame.image.load('icons/three.png')
+
 
 
 
@@ -270,7 +394,7 @@ home = pygame.image.load('icons/house.png')
 
 ### Navigation menu ###
 
-initial_screen()
+initial_screen(1)
 
 # position on the screen
 # position 1 - navigate, 2 - phone, 3 - tv, 4 - sos
@@ -287,10 +411,10 @@ while True:
 
         if initial_position > 4:
             initial_position = 1
-            select_icon_initial_screen(initial_position)
+            select_icon_initial_screen(initial_position, menu)
         if initial_position < 1:
             initial_position = 4
-            select_icon_initial_screen(initial_position)
+            select_icon_initial_screen(initial_position, menu)
 
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -298,17 +422,14 @@ while True:
         # key 275 is right
         if event.type == pygame.KEYDOWN and event.key == 275:
             initial_position = initial_position + 1
-            select_icon_initial_screen(initial_position)
+            select_icon_initial_screen(initial_position, menu)
         # key 276 is left
         if event.type == pygame.KEYDOWN and event.key == 276:
             initial_position = initial_position - 1
-            select_icon_initial_screen(initial_position)
+            select_icon_initial_screen(initial_position, menu)
         if event.type == pygame.KEYDOWN and event.key == 13:
             # update the menu disctionary
             menu = menu_dict(initial_position, menu)
-
             # enter the appropriate menu
             menu_selecter(menu)
-            if menu["navigation"] :
-                navigation_position = 1
-                select_icon_initial_screen(navigation_position)
+

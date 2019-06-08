@@ -203,19 +203,19 @@ def select_icon_phone_tv_screen(position, menu):
         for event in pygame.event.get():
             if position > 5:
                 position = 1
-                phone_screen(position)
+                phone_tv_screen(position)
             if position < 1:
                 position = 5
-                phone_screen(position)
+                phone_tv_screen(position)
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
             if event.type == pygame.KEYDOWN and event.key == 275:
                 position = position + 1
-                phone_screen(position)
+                phone_tv_screen(position)
             if event.type == pygame.KEYDOWN and event.key == 276:
                 position = position - 1
-                phone_screen(position)
+                phone_tv_screen(position)
             if event.type == pygame.KEYDOWN and event.key == 13:
                 # if we select to go to home menu
                 if position == 4:

@@ -198,7 +198,7 @@ def select_icon_initial_screen(position, menu):
                     menu_selecter(menu)
                     break
 
-            
+
 # phone and tv have the same screens
 def select_icon_phone_tv_screen(position, menu):
     phone_tv_screen(position)

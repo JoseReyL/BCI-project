@@ -79,16 +79,16 @@ menu = {
 
 
 # draw original screen menu
-def initial_screen(position):
+def initial_screen(position, colour):
     display_surface.fill(white)
     if position == 1:
-        pygame.draw.circle(display_surface, yellow, (225, Y // 2), 200)
+        pygame.draw.circle(display_surface, colour, (225, Y // 2), 200)
     if position == 2:
-        pygame.draw.circle(display_surface, yellow, (625, Y // 2), 200)
+        pygame.draw.circle(display_surface, colour, (625, Y // 2), 200)
     if position == 3:
-        pygame.draw.circle(display_surface, yellow, (1025, Y // 2), 200)
+        pygame.draw.circle(display_surface, colour, (1025, Y // 2), 200)
     if position == 4:
-        pygame.draw.circle(display_surface, yellow, (1400, Y // 2), 200)
+        pygame.draw.circle(display_surface, colour, (1400, Y // 2), 200)
 
     display_surface.blit(navigate, (100, Y // 2 - icon_height / 2))
     display_surface.blit(phone, (500, Y // 2 - icon_height / 2))
@@ -97,18 +97,18 @@ def initial_screen(position):
     pygame.display.update()
 
 # draw phone screen, call 1, call 2, call 3, home, sos
-def phone_tv_screen(position):
+def phone_tv_screen(position, colour):
     display_surface.fill(white)
     if position == 1:
-        pygame.draw.circle(display_surface, yellow, (100 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+        pygame.draw.circle(display_surface, colour, (100 + icon_width // 2, Y // 2 - icon_height // 2), 200)
     if position == 2:
-        pygame.draw.circle(display_surface, yellow, (500 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+        pygame.draw.circle(display_surface, colour, (500 + icon_width // 2, Y // 2 - icon_height // 2), 200)
     if position == 3:
-        pygame.draw.circle(display_surface, yellow, (900 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+        pygame.draw.circle(display_surface, colour, (900 + icon_width // 2, Y // 2 - icon_height // 2), 200)
     if position == 4:
-        pygame.draw.circle(display_surface, yellow, (1300 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+        pygame.draw.circle(display_surface, colour, (1300 + icon_width // 2, Y // 2 - icon_height // 2), 200)
     if position == 5:
-        pygame.draw.circle(display_surface, yellow, (X // 2, Y // 2 + icon_height // 2 + icon_height // 4), 200)
+        pygame.draw.circle(display_surface, colour, (X // 2, Y // 2 + icon_height // 2 + icon_height // 4), 200)
 
     display_surface.blit(one, (100, Y // 2 - icon_height))
     display_surface.blit(two, (500, Y // 2 - icon_height))
@@ -118,20 +118,20 @@ def phone_tv_screen(position):
     pygame.display.update()
 
 # draw navigation screen menu
-def navigation_screen(position):
+def navigation_screen(position, colour):
     display_surface.fill(white)
     if position == 1:
-        pygame.draw.circle(display_surface, yellow, (100 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+        pygame.draw.circle(display_surface, colour, (100 + icon_width // 2, Y // 2 - icon_height // 2), 200)
     if position == 2:
-        pygame.draw.circle(display_surface, yellow, (500 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+        pygame.draw.circle(display_surface, colour, (500 + icon_width // 2, Y // 2 - icon_height // 2), 200)
     if position == 3:
-        pygame.draw.circle(display_surface, yellow, (900 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+        pygame.draw.circle(display_surface, colour, (900 + icon_width // 2, Y // 2 - icon_height // 2), 200)
     if position == 4:
-        pygame.draw.circle(display_surface, yellow, (1300 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+        pygame.draw.circle(display_surface, colour, (1300 + icon_width // 2, Y // 2 - icon_height // 2), 200)
     if position == 5:
-        pygame.draw.circle(display_surface, yellow, (500 + icon_width // 2, Y // 2 + icon_height//2 + icon_height//4), 200)
+        pygame.draw.circle(display_surface, colour, (500 + icon_width // 2, Y // 2 + icon_height//2 + icon_height//4), 200)
     if position == 6:
-        pygame.draw.circle(display_surface, yellow, (900 + icon_width // 2, Y // 2 + icon_height//2 + icon_height//4), 200)
+        pygame.draw.circle(display_surface, colour, (900 + icon_width // 2, Y // 2 + icon_height//2 + icon_height//4), 200)
 
     display_surface.blit(up_arr, (100, Y // 2 - icon_height))
     display_surface.blit(down_arr, (500, Y // 2 - icon_height))
@@ -142,16 +142,16 @@ def navigation_screen(position):
     pygame.display.update()
 
 # draw sos screen
-def sos_screen(position):
+def sos_screen(position, colour):
     display_surface.fill(white)
     if position == 1:
-        pygame.draw.circle(display_surface, yellow, (225, Y // 2), 200)
+        pygame.draw.circle(display_surface, colour, (225, Y // 2), 200)
     if position == 2:
-        pygame.draw.circle(display_surface, yellow, (625, Y // 2), 200)
+        pygame.draw.circle(display_surface, colour, (625, Y // 2), 200)
     if position == 3:
-        pygame.draw.circle(display_surface, yellow, (1025, Y // 2), 200)
+        pygame.draw.circle(display_surface, colour, (1025, Y // 2), 200)
     if position == 4:
-        pygame.draw.circle(display_surface, yellow, (1400, Y // 2), 200)
+        pygame.draw.circle(display_surface, colour, (1400, Y // 2), 200)
     display_surface.blit(pain, (100, Y // 2 - icon_height / 2))
     display_surface.blit(food, (500, Y // 2 - icon_height / 2))
     display_surface.blit(wc, (900, Y // 2 - icon_height / 2))
@@ -160,94 +160,129 @@ def sos_screen(position):
 
 
 def select_icon_initial_screen(position, menu):
-    initial_screen(position)
+    initial_screen(position, yellow)
     while True:
         if position > 4:
             position = 1
-            initial_screen(position)
+            initial_screen(position, yellow)
         if position < 1:
             position = 4
-            initial_screen(position)
+            initial_screen(position, yellow)
 
         events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
         if events == []:
             print("Error! no predictions, continuing")
+            evt = []
         else:
             if len(events) > 1:
                 print("Warning: multiple predictions. Some ignored.")
             evt = events[-1]  # only use the last event
 
-        if evt.value == 0:
-            position = position - 1
-            initial_screen(position)
-        if evt.value == 1:
-            position = position + 1
-            initial_screen(position)
-        if evt.value == 2:
-            if position == 1:
-                menu = menu_dict(position, menu)
-                menu_selecter(menu)
-                break
-            if position == 2:
-                menu = menu_dict(position, menu)
-                menu_selecter(menu)
-                break
-            if position == 3:
-                menu = menu_dict(position, menu)
-                menu_selecter(menu)
-                break
-            if position == 4:
-                menu = menu_dict(position, menu)
-                menu_selecter(menu)
-                break
-        if evt.value == 3:
-            pass
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
 
-        '''
-        while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    quit()
-                if event.type == pygame.KEYDOWN and event.key == 275:
-                    position = position + 1
-                    initial_screen(position)
-                if event.type == pygame.KEYDOWN and event.key == 276:
-                    position = position - 1
-                    initial_screen(position)
-                if event.type == pygame.KEYDOWN and event.key == 13:
-                    if position == 1:
-                        menu = menu_dict(position, menu)
-                        menu_selecter(menu)
-                        break
-                    if position == 2:
-                        menu = menu_dict(position, menu)
-                        menu_selecter(menu)
-                        break
-                    if position == 3:
-                        menu = menu_dict(position, menu)
-                        menu_selecter(menu)
-                        break
-                    if position == 4:
-                        menu = menu_dict(position, menu)
-                        menu_selecter(menu)
-                        break
-            '''
+        if evt!=[]:
+            if int(evt.value) == 0:
+                position = position - 1
+                initial_screen(position, yellow)
+            if int(evt.value) == 1:
+                position = position + 1
+                initial_screen(position, yellow)
+            if int(evt.value) == 2:
+                if position == 1:
+                    initial_screen(position, green)
+                    sleep(1)
+                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                    if events == []:
+                        print("Error! no predictions, continuing")
+                        evt = []
+                    else:
+                        if len(events) > 1:
+                            print("Warning: multiple predictions. Some ignored.")
+                        evt = events[-1]  # only use the last event
+                    if evt !=[]:
+                        if int(evt.value) == 1:
+                            menu = menu_dict(position, menu)
+                            menu_selecter(menu)
+                            break
+                        elif int(evt.value) ==0:
+                            initial_screen(position, yellow)
+                if position == 2:
+                    initial_screen(position, green)
+                    sleep(1)
+                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                    if events == []:
+                        print("Error! no predictions, continuing")
+                        evt = []
+                    else:
+                        if len(events) > 1:
+                            print("Warning: multiple predictions. Some ignored.")
+                        evt = events[-1]  # only use the last event
+                    if evt != []:
+                        if int(evt.value) == 1:
+                            menu = menu_dict(position, menu)
+                            menu_selecter(menu)
+                            break
+                        elif int(evt.value) == 0:
+                            initial_screen(position, yellow)
+                if position == 3:
+                    initial_screen(position, green)
+                    sleep(1)
+                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                    if events == []:
+                        print("Error! no predictions, continuing")
+                        evt = []
+                    else:
+                        if len(events) > 1:
+                            print("Warning: multiple predictions. Some ignored.")
+                        evt = events[-1]  # only use the last event
+                    if evt != []:
+                        if int(evt.value) == 1:
+                            menu = menu_dict(position, menu)
+                            menu_selecter(menu)
+                            break
+                        elif int(evt.value) == 0:
+                            initial_screen(position, yellow)
+                if position == 4:
+                    initial_screen(position, green)
+                    sleep(1)
+                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                    if events == []:
+                        print("Error! no predictions, continuing")
+                        evt = []
+                    else:
+                        if len(events) > 1:
+                            print("Warning: multiple predictions. Some ignored.")
+                        evt = events[-1]  # only use the last event
+                    if evt != []:
+                        if int(evt.value) == 1:
+                            menu = menu_dict(position, menu)
+                            menu_selecter(menu)
+                            break
+                        elif int(evt.value) == 0:
+                            initial_screen(position, yellow)
+            if int(evt.value) == 3:
+                pass
+
+
 # phone and tv have the same screens
 def select_icon_phone_tv_screen(position, menu):
-    phone_tv_screen(position)
+    phone_tv_screen(position, yellow)
 
     while True:
         if position > 5:
             position = 1
-            phone_tv_screen(position)
+            phone_tv_screen(position, yellow)
         if position < 1:
             position = 5
-            phone_tv_screen(position)
+            phone_tv_screen(position, yellow)
 
         events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
         if events == []:
             print("Error! no predictions, continuing")
+            evt = []
         else:
             if len(events) > 1:
                 print("Warning: multiple predictions. Some ignored.")
@@ -258,196 +293,419 @@ def select_icon_phone_tv_screen(position, menu):
                 pygame.quit()
                 quit()
 
-        if evt.value == 0:
-            position = position - 1
-            phone_tv_screen(position)
-        if evt.value == 1:
-            position = position + 1
-            phone_tv_screen(position)
-        if eve.value == 2:
-            if position == 1:
-                pygame.draw.circle(display_surface, green, (100 + icon_width // 2, Y // 2 - icon_height // 2), 200)
-            if position == 2:
-                pygame.draw.circle(display_surface, green, (500 + icon_width // 2, Y // 2 - icon_height // 2), 200)
-            if position == 3:
-                pygame.draw.circle(display_surface, yellow, (900 + icon_width // 2, Y // 2 - icon_height // 2), 200)
-            if position == 4:
-                menu = menu_dict(0, menu)
-                menu_selecter(menu)
-                break
-            if position == 5:
-                menu = menu_dict(4, menu)
-                menu_selecter(menu)
-                break
-        if evt.value == 3:
-            pass
-    '''
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-            if event.type == pygame.KEYDOWN and event.key == 275:
-                position = position + 1
-                phone_tv_screen(position)
-            if event.type == pygame.KEYDOWN and event.key == 276:
+        if evt!=[]:
+            if int(evt.value) == 0:
                 position = position - 1
-                phone_tv_screen(position)
-            if event.type == pygame.KEYDOWN and event.key == 13:
-                # if we select to go to home menu
+                phone_tv_screen(position, yellow)
+            if int(evt.value) == 1:
+                position = position + 1
+                phone_tv_screen(position, yellow)
+            if int(eve.value) == 2:
+
+                if menu["tv"]:
+
+                    if position == 1:
+                        phone_tv_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('tv', 1)
+                            elif int(evt.value) == 0:
+                                select_icon_phone_tv_screen(position, yellow)
+
+                    if position == 2:
+                        phone_tv_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('tv', 2)
+                            elif int(evt.value) == 0:
+                                select_icon_phone_tv_screen(position, yellow)
+
+                    if position == 3:
+                        phone_tv_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('tv', 3)
+                            elif int(evt.value) == 0:
+                                select_icon_phone_tv_screen(position, yellow)
+                elif menu['phone']:
+
+                    if position == 1:
+                        phone_tv_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('call', 1)
+                            elif int(evt.value) == 0:
+                                select_icon_phone_tv_screen(position, yellow)
+
+                    if position == 2:
+                        phone_tv_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('call', 2)
+                            elif int(evt.value) == 0:
+                                select_icon_phone_tv_screen(position, yellow)
+
+                    if position == 3:
+                        phone_tv_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('call', 3)
+                            elif int(evt.value) == 0:
+                                select_icon_phone_tv_screen(position, yellow)
+
                 if position == 4:
-                    menu = menu_dict(0, menu)
-                    menu_selecter(menu)
-                    break
-                # if we select to go to sos
+                    phone_tv_screen(position, green)
+                    sleep(1)
+                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                    if events == []:
+                        print("Error! no predictions, continuing")
+                        evt = []
+                    else:
+                        if len(events) > 1:
+                            print("Warning: multiple predictions. Some ignored.")
+                        evt = events[-1]  # only use the last event
+                    if evt != []:
+                        if int(evt.value) == 1:
+                            menu = menu_dict(4, menu)
+                            menu_selecter(menu)
+                            break
+                        elif int(evt.value) == 0:
+                            select_icon_phone_tv_screen(position, yellow)
+
                 if position == 5:
-                    menu = menu_dict(4, menu)
-                    menu_selecter(menu)
-                    break
-     '''
+                    phone_tv_screen(position, green)
+                    sleep(1)
+                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                    if events == []:
+                        print("Error! no predictions, continuing")
+                        evt = []
+                    else:
+                        if len(events) > 1:
+                            print("Warning: multiple predictions. Some ignored.")
+                        evt = events[-1]  # only use the last event
+                    if evt != []:
+                        if int(evt.value) == 1:
+                            bufhelp.sendEvent('sos', 'on')
+                            menu = menu_dict(4, menu)
+                            menu_selecter(menu)
+                            break
+                        elif int(evt.value) == 0:
+                            select_icon_navigation_screen(position, yellow)
+            if int(evt.value) == 3:
+                pass
+
 
 def select_icon_sos_screen(position, menu):
-    sos_screen(position)
+    sos_screen(position, yellow)
 
     while True:
 
         if position > 4:
             position = 1
-            sos_screen(position)
+            sos_screen(position, yellow)
         if position < 1:
             position = 4
-            sos_screen(position)
+            sos_screen(position, yellow)
 
         events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
         if events == []:
             print("Error! no predictions, continuing")
+            evt = []
         else:
             if len(events) > 1:
                 print("Warning: multiple predictions. Some ignored.")
             evt = events[-1]  # only use the last event
-        # if left movement is predicted
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
 
-        if evt.value == 0:
-            position = position - 1
-            sos_screen(position)
-            # if right movement is predicted
-        if evt.value == 1:
-            position = position + 1
-            sos_screen(position)
-            # if both hands movement is predicted - select this option
-        if evt.value == 2:
-            # home selected
-            if position == 1:
-                pygame.draw.circle(display_surface, green, (225, Y // 2), 200)
-            if position == 2:
-                pygame.draw.circle(display_surface, yellow, (625, Y // 2), 200)
-            if position == 3:
-                pygame.draw.circle(display_surface, yellow, (1025, Y // 2), 200)
-            if position == 4:
-                menu = menu_dict(0, menu)
-                menu_selecter(menu)
-                break
-        if evt.value == 3:
-            pass
-
-    '''
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-            if event.type == pygame.KEYDOWN and event.key == 275:
-                position = position + 1
-                sos_screen(position)
-            if event.type == pygame.KEYDOWN and event.key == 276:
-                position = position - 1
-                sos_screen(position)
-            if event.type == pygame.KEYDOWN and event.key == 13:
-                # if we select to go to original menu
-                if position == 4:
-                    menu = menu_dict(0, menu)
-                    menu_selecter(menu)
-                    break
-    '''
+        if evt!=[]:
+                if int(evt.value) == 0:
+                    position = position - 1
+                    sos_screen(position, yellow)
+                    # if right movement is predicted
+                if int(evt.value) == 1:
+                    position = position + 1
+                    sos_screen(position, yellow)
+                    # if both hands movement is predicted - select this option
+                if int(evt.value) == 2:
+                    # home selected
+                    if position == 1:
+                        sos_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('sos', 'pain')
+                                menu = menu_dict(4, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt.value) == 0:
+                                select_icon_sos_screen(position, yellow)
+                    if position == 2:
+                        sos_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('sos', 'food')
+                                menu = menu_dict(4, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt.value) == 0:
+                                select_icon_sos_screen(position, yellow)
+                    if position == 3:
+                        sos_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('sos', 'wc')
+                                menu = menu_dict(4, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt.value) == 0:
+                                select_icon_sos_screen(position, yellow)
+                    if position == 4:
+                        sos_screen(position, green)
+                        sleep(1)
+                        menu = menu_dict(0, menu)
+                        menu_selecter(menu)
+                        break
+                if int(evt.value) == 3:
+                    pass
 
 def select_icon_navigation_screen(position, menu):
-    navigation_screen(position)
+    navigation_screen(position, yellow)
 
     while True:
 
         if position > 6:
             position = 1
-            navigation_screen(position)
+            navigation_screen(position, yellow)
         if position < 1:
             position = 6
-            navigation_screen(position)
+            navigation_screen(position, yellow)
 
         events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
         if events == []:
             print("Error! no predictions, continuing")
+            evt = []
         else:
             if len(events) > 1:
                 print("Warning: multiple predictions. Some ignored.")
             evt = events[-1]  # only use the last event
 
-    # if left movement is predicted
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        if evt.value == 0:
-            position = position - 1
-            navigation_screen(position)
-        # if right movement is predicted
-        if evt.value == 1:
-            position = position + 1
-            navigation_screen(position)
-        # if both hands movement is predicted - select this option
-        if evt.value == 2:
-            # home selected
-            if position == 5:
-                menu = menu_dict(0, menu)
-                menu_selecter(menu)
-                break
-            # sos selected
-            if position == 6:
-                menu = menu_dict(4, menu)
-                menu_selecter(menu)
-                break
-        if evt.value == 3:
-            pass
 
-    '''
-    while True:
-        for event in pygame.event.get():
-            # print(event)
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-            # key 275 is right
-            if event.type == pygame.KEYDOWN and event.key == 275:
-                position = position + 1
-                navigation_screen(position)
-            # key 276 is left
-            if event.type == pygame.KEYDOWN and event.key == 276:
-                position = position - 1
-                navigation_screen(position)
-            if event.type == pygame.KEYDOWN and event.key == 13:
-                # if we select to return to home menu
-                if position == 5:
-                    menu = menu_dict(0, menu)
-                    menu_selecter(menu)
-                    navigation = False
-                # if sos is selected
-                if position == 6:
-                    menu = menu_dict(4, menu)
-                    menu_selecter(menu)
-                    navigation = False
-            '''
+        if evt!=[]:
+                if int(evt.value) == 0:
+                    position = position - 1
+                    navigation_screen(position, yellow)
+                # if right movement is predicted
+                if int(evt.value) == 1:
+                    position = position + 1
+                    navigation_screen(position, yellow)
+                # if both hands movement is predicted - select this option
+                if int(evt.value) == 2:
+                    if position == 1:
+                        navigation_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('navigate', 'up')
+                                menu = menu_dict(4, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt.value) == 0:
+                                navigation_screen(position, yellow)
+                    if position == 2:
+                        navigation_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('navigate', 'down')
+                                menu = menu_dict(4, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt.value) == 0:
+                                navigation_screen(position, yellow)
+                    if position == 3:
+                        navigation_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('navigate', 'left')
+                                menu = menu_dict(4, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt.value) == 0:
+                                navigation_screen(position, yellow)
+                    if position == 4:
+                        navigation_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('navigate', 'right')
+                                menu = menu_dict(4, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt.value) == 0:
+                                navigation_screen(position, yellow)
+                    # home selected
+                    if position == 5:
+                        navigation_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                menu = menu_dict(0, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt.value) == 0:
+                                navigation_screen(position, yellow)
+                    # sos selected
+                    if position == 6:
+                        navigation_screen(position, green)
+                        sleep(1)
+                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+                        if events == []:
+                            print("Error! no predictions, continuing")
+                            evt = []
+                        else:
+                            if len(events) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt = events[-1]  # only use the last event
+                        if evt != []:
+                            if int(evt.value) == 1:
+                                bufhelp.sendEvent('sos', 'on')
+                                menu = menu_dict(4, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt.value) == 0:
+                                navigation_screen(position, yellow)
+                if int(evt.value) == 3:
+                    pass
+
 
 
 # updates the disctionary which says in which screen we are
@@ -562,7 +820,7 @@ ftc, hdr = bufhelp.connect()
 
 ### Navigation menu ###
 
-initial_screen(1)
+initial_screen(1, yellow)
 
 # position on the screen
 # position 1 - navigate, 2 - phone, 3 - tv, 4 - sos
@@ -575,43 +833,18 @@ while True:
     events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
     if events == []:
         print("Error! no predictions, continuing")
+        evt = []
     else:
         if len(events) > 1:
             print("Warning: multiple predictions. Some ignored.")
         evt = events[-1]  # only use the last event
 
-    # do not let the position get out of bounds and not showing which menu item is selected
-    if initial_position > 4:
-        initial_position = 1
-        select_icon_initial_screen(initial_position, menu)
-    if initial_position < 1:
-        initial_position = 4
-        select_icon_initial_screen(initial_position, menu)
-
-    # if left movement is predicted
-    if evt.value == 0:
-        initial_position = initial_position - 1
-        select_icon_initial_screen(initial_position, menu)
-    # if right movement is predicted
-    if evt.value == 1:
-        initial_position = initial_position + 1
-        select_icon_initial_screen(initial_position, menu)
-    # if both hands movement is predicted - select this option
-    if evt.value == 2:
-        menu = menu_dict(initial_position, menu)
-        menu_selecter(menu)
-    if evt.value == 3:
-        pass
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
-    '''
-    for event in pygame.event.get():
-
-       # print(event)
-
+    # do not let the position get out of bounds and not showing which menu item is selected
+    if evt!= []:
         if initial_position > 4:
             initial_position = 1
             select_icon_initial_screen(initial_position, menu)
@@ -619,20 +852,34 @@ while True:
             initial_position = 4
             select_icon_initial_screen(initial_position, menu)
 
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            quit()
-        # key 275 is right
-        if event.type == pygame.KEYDOWN and event.key == 275:
-            initial_position = initial_position + 1
-            select_icon_initial_screen(initial_position, menu)
-        # key 276 is left
-        if event.type == pygame.KEYDOWN and event.key == 276:
+        # if left movement is predicted
+        if int(evt.value) == 0:
             initial_position = initial_position - 1
             select_icon_initial_screen(initial_position, menu)
-        if event.type == pygame.KEYDOWN and event.key == 13:
-            # update the menu disctionary
-            menu = menu_dict(initial_position, menu)
-            # enter the appropriate menu
-            menu_selecter(menu)
-    '''
+        # if right movement is predicted
+        if int(evt.value) == 1:
+            initial_position = initial_position + 1
+            select_icon_initial_screen(initial_position, menu)
+        # if both hands movement is predicted - select this option
+        if int(evt.value) == 2:
+            initial_screen(initial_position, green)
+            sleep(1)
+            events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
+            if events == []:
+                print("Error! no predictions, continuing")
+                evt = []
+            else:
+                if len(events) > 1:
+                    print("Warning: multiple predictions. Some ignored.")
+                evt = events[-1]  # only use the last event
+            if evt != []:
+                if int(evt.value) == 1:
+                    menu = menu_dict(initial_position, menu)
+                    menu_selecter(menu)
+                    break
+                elif int(evt.value) == 0:
+                    initial_screen(position, yellow)
+        if int(evt.value) == 3:
+            pass
+
+

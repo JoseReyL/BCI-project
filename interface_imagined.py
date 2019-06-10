@@ -162,51 +162,128 @@ def sos_screen(position):
 def select_icon_initial_screen(position, menu):
     initial_screen(position)
     while True:
-        for event in pygame.event.get():
-            if position > 4:
-                position = 1
-                initial_screen(position)
-            if position < 1:
-                position = 4
-                initial_screen(position)
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-            if event.type == pygame.KEYDOWN and event.key == 275:
-                position = position + 1
-                initial_screen(position)
-            if event.type == pygame.KEYDOWN and event.key == 276:
-                position = position - 1
-                initial_screen(position)
-            if event.type == pygame.KEYDOWN and event.key == 13:
-                if position == 1:
-                    menu = menu_dict(position, menu)
-                    menu_selecter(menu)
-                    break
-                if position == 2:
-                    menu = menu_dict(position, menu)
-                    menu_selecter(menu)
-                    break
-                if position == 3:
-                    menu = menu_dict(position, menu)
-                    menu_selecter(menu)
-                    break
-                if position == 4:
-                    menu = menu_dict(position, menu)
-                    menu_selecter(menu)
-                    break
+        if position > 4:
+            position = 1
+            initial_screen(position)
+        if position < 1:
+            position = 4
+            initial_screen(position)
 
+        events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
+        if events == []:
+            print("Error! no predictions, continuing")
+        else:
+            if len(events) > 1:
+                print("Warning: multiple predictions. Some ignored.")
+            evt = events[-1]  # only use the last event
+
+        if evt.value == 0:
+            position = position - 1
+            initial_screen(position)
+        if evt.value == 1:
+            position = position + 1
+            initial_screen(position)
+        if evt.value == 2:
+            if position == 1:
+                menu = menu_dict(position, menu)
+                menu_selecter(menu)
+                break
+            if position == 2:
+                menu = menu_dict(position, menu)
+                menu_selecter(menu)
+                break
+            if position == 3:
+                menu = menu_dict(position, menu)
+                menu_selecter(menu)
+                break
+            if position == 4:
+                menu = menu_dict(position, menu)
+                menu_selecter(menu)
+                break
+        if evt.value == 3:
+            pass
+
+        '''
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                if event.type == pygame.KEYDOWN and event.key == 275:
+                    position = position + 1
+                    initial_screen(position)
+                if event.type == pygame.KEYDOWN and event.key == 276:
+                    position = position - 1
+                    initial_screen(position)
+                if event.type == pygame.KEYDOWN and event.key == 13:
+                    if position == 1:
+                        menu = menu_dict(position, menu)
+                        menu_selecter(menu)
+                        break
+                    if position == 2:
+                        menu = menu_dict(position, menu)
+                        menu_selecter(menu)
+                        break
+                    if position == 3:
+                        menu = menu_dict(position, menu)
+                        menu_selecter(menu)
+                        break
+                    if position == 4:
+                        menu = menu_dict(position, menu)
+                        menu_selecter(menu)
+                        break
+            '''
 # phone and tv have the same screens
 def select_icon_phone_tv_screen(position, menu):
     phone_tv_screen(position)
+
+    while True:
+        if position > 5:
+            position = 1
+            phone_tv_screen(position)
+        if position < 1:
+            position = 5
+            phone_tv_screen(position)
+
+        events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
+        if events == []:
+            print("Error! no predictions, continuing")
+        else:
+            if len(events) > 1:
+                print("Warning: multiple predictions. Some ignored.")
+            evt = events[-1]  # only use the last event
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+        if evt.value == 0:
+            position = position - 1
+            phone_tv_screen(position)
+        if evt.value == 1:
+            position = position + 1
+            phone_tv_screen(position)
+        if eve.value == 2:
+            if position == 1:
+                pygame.draw.circle(display_surface, green, (100 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+            if position == 2:
+                pygame.draw.circle(display_surface, green, (500 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+            if position == 3:
+                pygame.draw.circle(display_surface, yellow, (900 + icon_width // 2, Y // 2 - icon_height // 2), 200)
+            if position == 4:
+                menu = menu_dict(0, menu)
+                menu_selecter(menu)
+                break
+            if position == 5:
+                menu = menu_dict(4, menu)
+                menu_selecter(menu)
+                break
+        if evt.value == 3:
+            pass
+    '''
     while True:
         for event in pygame.event.get():
-            if position > 5:
-                position = 1
-                phone_tv_screen(position)
-            if position < 1:
-                position = 5
-                phone_tv_screen(position)
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
@@ -227,17 +304,59 @@ def select_icon_phone_tv_screen(position, menu):
                     menu = menu_dict(4, menu)
                     menu_selecter(menu)
                     break
+     '''
 
 def select_icon_sos_screen(position, menu):
     sos_screen(position)
+
+    while True:
+
+        if position > 4:
+            position = 1
+            sos_screen(position)
+        if position < 1:
+            position = 4
+            sos_screen(position)
+
+        events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
+        if events == []:
+            print("Error! no predictions, continuing")
+        else:
+            if len(events) > 1:
+                print("Warning: multiple predictions. Some ignored.")
+            evt = events[-1]  # only use the last event
+        # if left movement is predicted
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+        if evt.value == 0:
+            position = position - 1
+            sos_screen(position)
+            # if right movement is predicted
+        if evt.value == 1:
+            position = position + 1
+            sos_screen(position)
+            # if both hands movement is predicted - select this option
+        if evt.value == 2:
+            # home selected
+            if position == 1:
+                pygame.draw.circle(display_surface, green, (225, Y // 2), 200)
+            if position == 2:
+                pygame.draw.circle(display_surface, yellow, (625, Y // 2), 200)
+            if position == 3:
+                pygame.draw.circle(display_surface, yellow, (1025, Y // 2), 200)
+            if position == 4:
+                menu = menu_dict(0, menu)
+                menu_selecter(menu)
+                break
+        if evt.value == 3:
+            pass
+
+    '''
     while True:
         for event in pygame.event.get():
-            if position > 4:
-                position = 1
-                sos_screen(position)
-            if position < 1:
-                position = 4
-                sos_screen(position)
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
@@ -253,20 +372,59 @@ def select_icon_sos_screen(position, menu):
                     menu = menu_dict(0, menu)
                     menu_selecter(menu)
                     break
-
+    '''
 
 def select_icon_navigation_screen(position, menu):
     navigation_screen(position)
-    navigation = True
-    while navigation:
+
+    while True:
+
+        if position > 6:
+            position = 1
+            navigation_screen(position)
+        if position < 1:
+            position = 6
+            navigation_screen(position)
+
+        events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
+        if events == []:
+            print("Error! no predictions, continuing")
+        else:
+            if len(events) > 1:
+                print("Warning: multiple predictions. Some ignored.")
+            evt = events[-1]  # only use the last event
+
+    # if left movement is predicted
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+        if evt.value == 0:
+            position = position - 1
+            navigation_screen(position)
+        # if right movement is predicted
+        if evt.value == 1:
+            position = position + 1
+            navigation_screen(position)
+        # if both hands movement is predicted - select this option
+        if evt.value == 2:
+            # home selected
+            if position == 5:
+                menu = menu_dict(0, menu)
+                menu_selecter(menu)
+                break
+            # sos selected
+            if position == 6:
+                menu = menu_dict(4, menu)
+                menu_selecter(menu)
+                break
+        if evt.value == 3:
+            pass
+
+    '''
+    while True:
         for event in pygame.event.get():
             # print(event)
-            if position > 6:
-                position = 1
-                navigation_screen(position)
-            if position < 1:
-                position = 6
-                navigation_screen(position)
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
@@ -289,7 +447,7 @@ def select_icon_navigation_screen(position, menu):
                     menu = menu_dict(4, menu)
                     menu_selecter(menu)
                     navigation = False
-
+            '''
 
 
 # updates the disctionary which says in which screen we are
@@ -331,14 +489,24 @@ def menu_selecter(menu):
 # to use pygame's functionality.
 pygame.init()
 
-# define the RGB value
-# for white colour
+# define the RGB value for colours
 white = (255, 255, 255)
 yellow = (255, 255, 0)
 black = (0, 0, 0)
 green = (0, 255, 0)
 red = (255, 0, 0)
 blue = (0,0,255)
+
+
+# CONFIGURABLE VARIABLES EXPERIMENT
+verb = 0
+nSymbols = 2
+nSequences = 2 # a bit more data to be on the safe side
+nBlock = 1  # 10; # number of stim blocks to use
+trialDuration = 3
+feedbackDuration = 2
+baselineDuration = 1
+intertrialDuration = 2
 
 # assigning values to X and Y variable (resolution)
 X = 1600
@@ -351,7 +519,7 @@ icon_height = 256
 display_surface = pygame.display.set_mode((X, Y))
 
 # set the pygame window name
-pygame.display.set_caption('Image')
+pygame.display.set_caption('Brain-Computer Interface Imagined Movement')
 
 # create a surface object, image is drawn on it.
 up_arr = pygame.image.load('icons/up_arrow.png')
@@ -390,7 +558,7 @@ three = pygame.image.load('icons/three.png')
 
 
 # connect to the buffer
-# ftc, hdr = bufhelp.connect()
+ftc, hdr = bufhelp.connect()
 
 ### Navigation menu ###
 
@@ -399,12 +567,47 @@ initial_screen(1)
 # position on the screen
 # position 1 - navigate, 2 - phone, 3 - tv, 4 - sos
 
+# classifier: # 0 - left, 1 - right, 2 - both, 3 - none (no movement)
 initial_position = 1
 
 while True:
 
-   # events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state)
+    events, state = bufhelp.buffer_newevents('classifier.prediction', 3000, state=None)
+    if events == []:
+        print("Error! no predictions, continuing")
+    else:
+        if len(events) > 1:
+            print("Warning: multiple predictions. Some ignored.")
+        evt = events[-1]  # only use the last event
 
+    # do not let the position get out of bounds and not showing which menu item is selected
+    if initial_position > 4:
+        initial_position = 1
+        select_icon_initial_screen(initial_position, menu)
+    if initial_position < 1:
+        initial_position = 4
+        select_icon_initial_screen(initial_position, menu)
+
+    # if left movement is predicted
+    if evt.value == 0:
+        initial_position = initial_position - 1
+        select_icon_initial_screen(initial_position, menu)
+    # if right movement is predicted
+    if evt.value == 1:
+        initial_position = initial_position + 1
+        select_icon_initial_screen(initial_position, menu)
+    # if both hands movement is predicted - select this option
+    if evt.value == 2:
+        menu = menu_dict(initial_position, menu)
+        menu_selecter(menu)
+    if evt.value == 3:
+        pass
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+    '''
     for event in pygame.event.get():
 
        # print(event)
@@ -432,4 +635,4 @@ while True:
             menu = menu_dict(initial_position, menu)
             # enter the appropriate menu
             menu_selecter(menu)
-
+    '''

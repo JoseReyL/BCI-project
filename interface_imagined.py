@@ -192,77 +192,102 @@ def select_icon_initial_screen(position, menu):
                 initial_screen(position, yellow)
             if int(evt.value) == 2:
                 if position == 1:
+                    selected = False
                     initial_screen(position, green)
-                    sleep(1)
-                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                    if events == []:
-                        print("Error! no predictions, continuing")
-                        evt = []
-                    else:
-                        if len(events) > 1:
-                            print("Warning: multiple predictions. Some ignored.")
-                        evt = events[-1]  # only use the last event
-                    if evt !=[]:
-                        if int(evt.value) == 1:
-                            menu = menu_dict(position, menu)
-                            menu_selecter(menu)
-                            break
-                        elif int(evt.value) ==0:
-                            initial_screen(position, yellow)
+                    # sleep(1)
+                    bufhelp.sendEvent('errp.trigger', 'start')
+                    while True:
+                        events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                        if events_errp == []:
+                            print("Error! no predictions, continuing")
+                            evt_errp = []
+                        else:
+                            if len(events_errp) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt_errp = events_errp[-1]  # only use the last event
+                        if evt_errp !=[]:
+                            if int(evt_errp.value) == 1:
+                                selected = True
+                                menu = menu_dict(position, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt_errp.value) ==0:
+                                initial_screen(position, yellow)
+                                break
+                    if selected:break
                 if position == 2:
+                    selected = False
                     initial_screen(position, green)
-                    sleep(1)
-                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                    if events == []:
-                        print("Error! no predictions, continuing")
-                        evt = []
-                    else:
-                        if len(events) > 1:
-                            print("Warning: multiple predictions. Some ignored.")
-                        evt = events[-1]  # only use the last event
-                    if evt != []:
-                        if int(evt.value) == 1:
-                            menu = menu_dict(position, menu)
-                            menu_selecter(menu)
-                            break
-                        elif int(evt.value) == 0:
-                            initial_screen(position, yellow)
+                    # sleep(1)
+                    bufhelp.sendEvent('errp.trigger', 'start')
+                    while True:
+                        events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                        if events_errp == []:
+                            print("Error! no predictions, continuing")
+                            evt_errp = []
+                        else:
+                            if len(events_errp) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt_errp = events_errp[-1]  # only use the last event
+                        if evt_errp != []:
+                            if int(evt_errp.value) == 1:
+                                selected = True
+                                menu = menu_dict(position, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt_errp.value) == 0:
+                                initial_screen(position, yellow)
+                                break
+                    if selected:break
                 if position == 3:
+                    selected = False
                     initial_screen(position, green)
-                    sleep(1)
-                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                    if events == []:
-                        print("Error! no predictions, continuing")
-                        evt = []
-                    else:
-                        if len(events) > 1:
-                            print("Warning: multiple predictions. Some ignored.")
-                        evt = events[-1]  # only use the last event
-                    if evt != []:
-                        if int(evt.value) == 1:
-                            menu = menu_dict(position, menu)
-                            menu_selecter(menu)
-                            break
-                        elif int(evt.value) == 0:
-                            initial_screen(position, yellow)
+                    # sleep(1)
+                    bufhelp.sendEvent('errp.trigger', 'start')
+                    while True:
+                        events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                        if events_errp == []:
+                            print("Error! no predictions, continuing")
+                            evt_errp = []
+                        else:
+                            if len(events_errp) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt_errp = events_errp[-1]  # only use the last event
+                        if evt_errp != []:
+                            if int(evt_errp.value) == 1:
+                                selected = True
+                                menu = menu_dict(position, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt_errp.value) == 0:
+                                initial_screen(position, yellow)
+                                break
+                    if selected:break
                 if position == 4:
+                    selected = False
                     initial_screen(position, green)
-                    sleep(1)
-                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                    if events == []:
-                        print("Error! no predictions, continuing")
-                        evt = []
-                    else:
-                        if len(events) > 1:
-                            print("Warning: multiple predictions. Some ignored.")
-                        evt = events[-1]  # only use the last event
-                    if evt != []:
-                        if int(evt.value) == 1:
-                            menu = menu_dict(position, menu)
-                            menu_selecter(menu)
-                            break
-                        elif int(evt.value) == 0:
-                            initial_screen(position, yellow)
+                    # sleep(1)
+                    bufhelp.sendEvent('errp.trigger', 'start')
+                    while True:
+                        events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                        if events_errp == []:
+                            print("Error! no predictions, continuing")
+                            evt_errp = []
+                        else:
+                            if len(events_errp) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt_errp = events_errp[-1]  # only use the last event
+                        if evt_errp != []:
+                            if int(evt_errp.value) == 1:
+                                selected = False
+                                menu = menu_dict(position, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt_errp.value) == 0:
+                                initial_screen(position, yellow)
+                                break
+                    if selected:break
+
             if int(evt.value) == 3:
                 pass
 
@@ -300,151 +325,188 @@ def select_icon_phone_tv_screen(position, menu):
             if int(evt.value) == 1:
                 position = position + 1
                 phone_tv_screen(position, yellow)
-            if int(eve.value) == 2:
-
+            if int(evt.value) == 2:
                 if menu["tv"]:
-
                     if position == 1:
                         phone_tv_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('tv', 1)
-                            elif int(evt.value) == 0:
-                                select_icon_phone_tv_screen(position, yellow)
-
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('tv', 1)
+                                    phone_tv_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    phone_tv_screen(position, yellow)
+                                    break
                     if position == 2:
                         phone_tv_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('tv', 2)
-                            elif int(evt.value) == 0:
-                                select_icon_phone_tv_screen(position, yellow)
-
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('tv', 2)
+                                    phone_tv_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    phone_tv_screen(position, yellow)
+                                    break
                     if position == 3:
                         phone_tv_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('tv', 3)
-                            elif int(evt.value) == 0:
-                                select_icon_phone_tv_screen(position, yellow)
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('tv', 3)
+                                    phone_tv_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    phone_tv_screen(position, yellow)
+                                    break
                 elif menu['phone']:
-
                     if position == 1:
                         phone_tv_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('call', 1)
-                            elif int(evt.value) == 0:
-                                select_icon_phone_tv_screen(position, yellow)
-
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('call', 1)
+                                    phone_tv_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    phone_tv_screen(position, yellow)
+                                    break
                     if position == 2:
                         phone_tv_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('call', 2)
-                            elif int(evt.value) == 0:
-                                select_icon_phone_tv_screen(position, yellow)
-
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('call', 2)
+                                    phone_tv_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    phone_tv_screen(position, yellow)
+                                    break
                     if position == 3:
                         phone_tv_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('call', 3)
-                            elif int(evt.value) == 0:
-                                select_icon_phone_tv_screen(position, yellow)
-
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('call', 3)
+                                    phone_tv_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    phone_tv_screen(position, yellow)
+                                    break
                 if position == 4:
+                    selected = False
                     phone_tv_screen(position, green)
-                    sleep(1)
-                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                    if events == []:
-                        print("Error! no predictions, continuing")
-                        evt = []
-                    else:
-                        if len(events) > 1:
-                            print("Warning: multiple predictions. Some ignored.")
-                        evt = events[-1]  # only use the last event
-                    if evt != []:
-                        if int(evt.value) == 1:
-                            menu = menu_dict(4, menu)
-                            menu_selecter(menu)
-                            break
-                        elif int(evt.value) == 0:
-                            select_icon_phone_tv_screen(position, yellow)
-
+                    # sleep(1)
+                    bufhelp.sendEvent('errp.trigger', 'start')
+                    while True:
+                        events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                        if events_errp == []:
+                            print("Error! no predictions, continuing")
+                            evt_errp = []
+                        else:
+                            if len(events_errp) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt_errp = events_errp[-1]  # only use the last event
+                        if evt_errp != []:
+                            if int(evt_errp.value) == 1:
+                                if menu["tv"]:
+                                    bufhelp.sendEvent("tv", "end")
+                                selected = True
+                                menu = menu_dict(0, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt_errp.value) == 0:
+                                phone_tv_screen(position, yellow)
+                                break
+                    if selected:break
                 if position == 5:
+                    selected = False
                     phone_tv_screen(position, green)
-                    sleep(1)
-                    events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                    if events == []:
-                        print("Error! no predictions, continuing")
-                        evt = []
-                    else:
-                        if len(events) > 1:
-                            print("Warning: multiple predictions. Some ignored.")
-                        evt = events[-1]  # only use the last event
-                    if evt != []:
-                        if int(evt.value) == 1:
-                            bufhelp.sendEvent('sos', 'on')
-                            menu = menu_dict(4, menu)
-                            menu_selecter(menu)
-                            break
-                        elif int(evt.value) == 0:
-                            select_icon_navigation_screen(position, yellow)
+                    # sleep(1)
+                    bufhelp.sendEvent('errp.trigger', 'start')
+                    while True:
+                        events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                        if events_errp == []:
+                            print("Error! no predictions, continuing")
+                            evt_errp = []
+                        else:
+                            if len(events_errp) > 1:
+                                print("Warning: multiple predictions. Some ignored.")
+                            evt_errp = events_errp[-1]  # only use the last event
+                        if evt_errp != []:
+                            if int(evt_errp.value) == 1:
+                                if menu["tv"]:
+                                    bufhelp.sendEvent("tv", "end")
+                                bufhelp.sendEvent('sos', 'on')
+                                selected = True
+                                menu = menu_dict(4, menu)
+                                menu_selecter(menu)
+                                break
+                            elif int(evt_errp.value) == 0:
+                                phone_tv_screen(position, yellow)
+                                break
+                    if selected:break
             if int(evt.value) == 3:
                 pass
 
@@ -488,67 +550,91 @@ def select_icon_sos_screen(position, menu):
                     # home selected
                     if position == 1:
                         sos_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('sos', 'pain')
-                                menu = menu_dict(4, menu)
-                                menu_selecter(menu)
-                                break
-                            elif int(evt.value) == 0:
-                                select_icon_sos_screen(position, yellow)
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('sos', 'pain')
+                                    sos_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    sos_screen(position, yellow)
+                                    break
                     if position == 2:
                         sos_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('sos', 'food')
-                                menu = menu_dict(4, menu)
-                                menu_selecter(menu)
-                                break
-                            elif int(evt.value) == 0:
-                                select_icon_sos_screen(position, yellow)
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('sos', 'food')
+                                    sos_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    sos_screen(position, yellow)
+                                    break
                     if position == 3:
                         sos_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('sos', 'wc')
-                                menu = menu_dict(4, menu)
-                                menu_selecter(menu)
-                                break
-                            elif int(evt.value) == 0:
-                                select_icon_sos_screen(position, yellow)
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('sos', 'wc')
+                                    sos_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    sos_screen(position, yellow)
+                                    break
                     if position == 4:
+                        selected = False
                         sos_screen(position, green)
-                        sleep(1)
-                        menu = menu_dict(0, menu)
-                        menu_selecter(menu)
-                        break
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    selected = True
+                                    menu = menu_dict(0, menu)
+                                    menu_selecter(menu)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    sos_screen(position, yellow)
+                                    break
+                        if selected:break
                 if int(evt.value) == 3:
                     pass
 
@@ -590,119 +676,139 @@ def select_icon_navigation_screen(position, menu):
                 if int(evt.value) == 2:
                     if position == 1:
                         navigation_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('navigate', 'up')
-                                menu = menu_dict(4, menu)
-                                menu_selecter(menu)
-                                break
-                            elif int(evt.value) == 0:
-                                navigation_screen(position, yellow)
+                        # sleep(1)
+                        while True:
+                            bufhelp.sendEvent('errp.trigger', 'start')
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('navigate', 'up')
+                                    navigation_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    navigation_screen(position, yellow)
+                                    break
                     if position == 2:
                         navigation_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('navigate', 'down')
-                                menu = menu_dict(4, menu)
-                                menu_selecter(menu)
-                                break
-                            elif int(evt.value) == 0:
-                                navigation_screen(position, yellow)
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('navigate', 'down')
+                                    navigation_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    navigation_screen(position, yellow)
+                                    break
                     if position == 3:
                         navigation_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('navigate', 'left')
-                                menu = menu_dict(4, menu)
-                                menu_selecter(menu)
-                                break
-                            elif int(evt.value) == 0:
-                                navigation_screen(position, yellow)
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('navigate', 'left')
+                                    navigation_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    navigation_screen(position, yellow)
+                                    break
                     if position == 4:
                         navigation_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('navigate', 'right')
-                                menu = menu_dict(4, menu)
-                                menu_selecter(menu)
-                                break
-                            elif int(evt.value) == 0:
-                                navigation_screen(position, yellow)
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('navigate', 'right')
+                                    navigation_screen(position, blue)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    navigation_screen(position, yellow)
+                                    break
                     # home selected
                     if position == 5:
+                        selected = False
                         navigation_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                menu = menu_dict(0, menu)
-                                menu_selecter(menu)
-                                break
-                            elif int(evt.value) == 0:
-                                navigation_screen(position, yellow)
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    selected = True
+                                    menu = menu_dict(0, menu)
+                                    menu_selecter(menu)
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    navigation_screen(position, yellow)
+                                    break
+                        if selected: break
                     # sos selected
                     if position == 6:
+                        selected = False
                         navigation_screen(position, green)
-                        sleep(1)
-                        events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-                        if events == []:
-                            print("Error! no predictions, continuing")
-                            evt = []
-                        else:
-                            if len(events) > 1:
-                                print("Warning: multiple predictions. Some ignored.")
-                            evt = events[-1]  # only use the last event
-                        if evt != []:
-                            if int(evt.value) == 1:
-                                bufhelp.sendEvent('sos', 'on')
-                                menu = menu_dict(4, menu)
-                                menu_selecter(menu)
-                                break
-                            elif int(evt.value) == 0:
-                                navigation_screen(position, yellow)
+                        # sleep(1)
+                        bufhelp.sendEvent('errp.trigger', 'start')
+                        while True:
+                            events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                            if events_errp == []:
+                                print("Error! no predictions, continuing")
+                                evt_errp = []
+                            else:
+                                if len(events_errp) > 1:
+                                    print("Warning: multiple predictions. Some ignored.")
+                                evt_errp = events_errp[-1]  # only use the last event
+                            if evt_errp != []:
+                                if int(evt_errp.value) == 1:
+                                    bufhelp.sendEvent('sos', 'on')
+                                    menu = menu_dict(4, menu)
+                                    menu_selecter(menu)
+                                    selected = True
+                                    break
+                                elif int(evt_errp.value) == 0:
+                                    navigation_screen(position, yellow)
+                                    break
+                        if selected: break
                 if int(evt.value) == 3:
                     pass
 
@@ -862,23 +968,30 @@ while True:
             select_icon_initial_screen(initial_position, menu)
         # if both hands movement is predicted - select this option
         if int(evt.value) == 2:
+            selected = False
             initial_screen(initial_position, green)
-            sleep(1)
-            events, state = bufhelp.buffer_newevents('errp.trigger', 1000, state=None)
-            if events == []:
-                print("Error! no predictions, continuing")
-                evt = []
-            else:
-                if len(events) > 1:
-                    print("Warning: multiple predictions. Some ignored.")
-                evt = events[-1]  # only use the last event
-            if evt != []:
-                if int(evt.value) == 1:
-                    menu = menu_dict(initial_position, menu)
-                    menu_selecter(menu)
-                    break
-                elif int(evt.value) == 0:
-                    initial_screen(position, yellow)
+            # sleep(1)
+            bufhelp.sendEvent('errp.trigger', 'start')
+            while True:
+                events_errp, state_errp = bufhelp.buffer_newevents('errp.prediction', 1000, state=None)
+                if events_errp == []:
+                    print("Error! no predictions, continuing")
+                    evt_errp = []
+                else:
+                    if len(events_errp) > 1:
+                        print("Warning: multiple predictions. Some ignored.")
+                    evt_errp = events_errp[-1]  # only use the last event
+                if evt_errp != []:
+                    if int(evt_errp.value) == 1:
+                        menu = menu_dict(initial_position, menu)
+                        menu_selecter(menu)
+                        selected = True
+                        break
+                    elif int(evt_errp.value) == 0:
+                        initial_screen(initial_position, yellow)
+                        break
+            if selected: break
+
         if int(evt.value) == 3:
             pass
 

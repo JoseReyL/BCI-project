@@ -11,7 +11,7 @@ The following project is part of the Buffer-BCI framework. First you need to ins
 
 Next, clone or download our repository under Tutorials folder of the Buffer-BCI framework.
 
-The project is implemented in pygame. To be able to run our experiment, you need to install psycjopy. We recommend to make a separate conda environment for the project first. There are the steps:
+The project is implemented in pygame. To be able to run our experiment, you need to install psychopy. We recommend to make a separate conda environment for the project first. There are the steps:
 
 * Make a new environmenent named *bcienv* using conda:
 ```
@@ -46,5 +46,5 @@ Once you have selected an option, it will be coloured in green. Then, normally t
 
 ## Authors
 **Jose**  
-**Lorenzo**  
+**Lorenzo Valacchi**  
 **Mihaela Gerova**  

@@ -43,5 +43,7 @@ Ones you have selected an option, it will be coloured in green. Then, normally t
 
 ## Authors
 **Jose**
+
 **Lorenzo**
+
 **Mihaela Gerova**

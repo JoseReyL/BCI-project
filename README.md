@@ -36,6 +36,9 @@ To run our experiment you need to do the following steps (simultaneously, sepera
 ## Debugging
 For debugging purposes, or in case you would like to see how the system is working on a conceptual level without connecting to EEG mobile equipment, you can manually send events in the terminal after running `./debug_quickstart.sh`
 
+Then you need to only run the interface: `python interdace_imagined.py`
+**Note**: in the code of interface_imagined.py change **DEBUG** on line 20 to **True**
+
 To navigate through the interface send the following event type: *classifier.prediction*
 Values: 0 - left, 1 - right, 2 - to select the option
 

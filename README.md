@@ -5,7 +5,7 @@ The following brain-computer interface project is part of the final assessment f
 ## The project
 The project is based on imagined movement and has an implementation of error potentials. The aim of the interface is enable a paralised patient to perform simple actions, such as navigate through his/her house, call someone, watch TV or call for emergency. The types of emergency are toilet, food, and pain. 
 
-## Prerequisites and Inttallation
+## Prerequisites and Installation
 Here are detailed instructions about the installation procedure. 
 The following project is part of the Buffer-BCI framework. First you need to install the framework by cloning the git repository: [Buffer-BCI](https://github.com/jadref/buffer_bci)
 

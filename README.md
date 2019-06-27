@@ -3,7 +3,8 @@
 The following brain-computer interface project is part of the final assessment for the course Advanced Brain-Computer Interfaces (SOW-MKI46) taught at Radboud University, Nijmegen, The Netherlands.
 
 ## The project
-The project is based on imagined movement and has an implementation of error potentials. The aim of the interface is enable a paralised patient to perform simple actions, such as navigate through his/her house, call someone, watch TV or call for emergency. The types of emergency are toilet, food, and pain. 
+The project is based on imagined movement and has an implementation of error potentials. The aim of the interface is enable a paralised patient to perform simple actions, such as navigate through his/her house, call someone, watch TV or call for emergency. The types of emergency are toilet, food, and pain.  
+Mobile EEG equipment is required to be able to run the brain computer interface. Our project was developed with a water-based mobile EEG equipment from Mobita.
 
 ## Prerequisites and Installation
 Here are detailed instructions about the installation procedure. 

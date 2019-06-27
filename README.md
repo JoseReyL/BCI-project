@@ -109,9 +109,18 @@ In order to select an option, you should imagine the movement of both hands
 
 ![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/Telephone.jpeg?raw=true)
 
+<p align="center">
+  <img width="448" height="260" src="https://github.com/JoseReyL/BCI-project/blob/master/screenshots/both.png?raw=true">
+</p>
 
 
 ![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/Telephone%20select.jpeg?raw=true)
+
+After the selection is made, for 1s the system will collect data to look for activity whose pattern may indicate the selection was a mistake.
+
+If no mistakes were found, it will proceed to the selected menu.
+
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/telephone_menu.png?raw=true)
 
 ## Authors
 **Jose Rey Lopez**  

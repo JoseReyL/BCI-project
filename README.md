@@ -26,12 +26,41 @@ source activate bcienv
 sudo apt-get install python3-pip
 sudo pip3 install pygame
 ```
+
+## Starting the mobita device
+
+To collect the signals in the computer is necessary to turn on and connect the tmsi mobita.
+
+1. Connect the USB stick to the computer
+
+2. Check that the blue led in the device is blinking, that means it's ready to connect
+
+3. Run on terminal `buffer_bci-master/dataAcq/startJavaBuffer.bat`
+
+4. Run on terminal `buffer_bci-master/dataAcq/startMobitaAutoConnect.bat`
+
+5. Run on terminal `buffer_bci-master/dataAcq/startSigViewer.bat`
+
+Now you should see how matlab starts and you are asked to select the cap configuration 
+
+6. Select `cap_tmsi_mobita_32ch.txt`
+
+If everything is correct you should see the following screen on the matlab program
+
+![](https://raw.githubusercontent.com/JoseReyL/BCI-project/master/channels.png)
+
+Now you can run the project
+
 ## Running the experiment
 To run our experiment you need to do the following steps (simultaneously, seperate terminals):
-* Connect to the buffer-bci framework by running `./debug_quickstart.sh`
-* Run the imagined movement classifier: `python classifier.py`
-* Run the error potential classifier: `python classifier_ErrPs.py`
-* Run the interface: `python interface_imagined.py`
+
+1. Connect to the buffer-bci framework by running `./debug_quickstart.sh`
+
+2. Run the imagined movement classifier: `python classifier.py`
+
+3. Run the error potential classifier: `python classifier_ErrPs.py`
+
+4. Run the interface: `python interface_imagined.py`
 
 ## Debugging
 For debugging purposes, or in case you would like to see how the system is working on a conceptual level without connecting to EEG mobile equipment, you can manually send events in the terminal after running `./debug_quickstart.sh`
@@ -44,7 +73,9 @@ Values: 0 - left, 1 - right, 2 - to select the option
 
 Once you have selected an option, it will be coloured in green. Then, normally the error potential classifier is evoked. To send an event manuaally, the event type is *errp.prediction* and the values are 0 - mistake (reject the selection) and 1 - select the option. If you reject the selection, you will keep selecting from the options on the current screen. 
 
+
+
 ## Authors
-**Jose**  
+**Jose Rey Lopez**  
 **Lorenzo Valacchi**  
 **Mihaela Gerova**  

@@ -63,6 +63,8 @@ To run our experiment you need to do the following steps (simultaneously, sepera
 
 4. Run the interface: `python interface_imagined.py`
 
+Detailed information about the purpose of each file, as well as its overall structure can be found under Code Documentation.
+
 ## Debugging
 For debugging purposes, or in case you would like to see how the system is working on a conceptual level without connecting to EEG mobile equipment, you can manually send events in the terminal after running `./debug_quickstart.sh`
 

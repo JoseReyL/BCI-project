@@ -122,7 +122,7 @@ def display_message():
               + "\n" \
               + "If no arrows are marked in yellow - you are asked to not imagine any movement, just remain concentrated on the central point \n" \
               + "\n" \
-              + "The following is an example of a request to imagine movement of your left hand"
+              + "If the target then turns green you did good, red for bad. Easy! Good luck."
 
     blit_text(display_surface, message, (20, 50), font, black)
     pygame.display.update()
@@ -182,7 +182,7 @@ def run_feedback(nSequences, nBlock, trialDuration, feedbackDuration, intertrial
        # initial_display()
 
 
-        # show the target
+        # show the target in yellow
 
         if target == 0:
             pygame.draw.circle(display_surface, yellow, [X // 2, Y // 2], 40) # fixation yellow
@@ -228,53 +228,55 @@ def run_feedback(nSequences, nBlock, trialDuration, feedbackDuration, intertrial
             evt=events[-1] # only use the last event
 
         print(evt.value == target)
-        if evt.value == target:
+        if evt.value == target: 
             bufhelp.sendEvent('stimulus.start_feedback', "1")
         else:
             bufhelp.sendEvent('stimulus.start_feedback', "0")
             
         # show prediction (user feedback)
         if evt.value == target :    # good prediction !
+            # Turn the target green
             if target == 0:
-                pygame.draw.circle(display_surface, green, [X // 2, Y // 2], 40) # fixation yellow
-                pygame.draw.circle(display_surface, green, (535, 400), 100) # mark target
+                pygame.draw.circle(display_surface, green, [X // 2, Y // 2], 40) 
+                pygame.draw.circle(display_surface, green, (535, 400), 100) 
                 display_surface.blit(left_arr, (471, 336))
                 pygame.display.update()
             elif target == 1:
-                pygame.draw.circle(display_surface, green, [X // 2, Y // 2], 40)  # fixation yellow
-                pygame.draw.circle(display_surface, green, (1065, 400), 100) # mark target
+                pygame.draw.circle(display_surface, green, [X // 2, Y // 2], 40)  
+                pygame.draw.circle(display_surface, green, (1065, 400), 100) 
                 display_surface.blit(right_arr, (1001, 336))
                 pygame.display.update()
             elif target == 2:
-                pygame.draw.circle(display_surface, green, [X // 2, Y // 2], 40)  # fixation yellow
-                pygame.draw.circle(display_surface, green, (535, 400), 100)  # mark target
-                pygame.draw.circle(display_surface, green, (1065, 400), 100)  # mark target
+                pygame.draw.circle(display_surface, green, [X // 2, Y // 2], 40)  
+                pygame.draw.circle(display_surface, green, (535, 400), 100)  
+                pygame.draw.circle(display_surface, green, (1065, 400), 100)  
                 display_surface.blit(left_arr, (471, 336))
                 display_surface.blit(right_arr, (1001, 336))
                 pygame.display.update()
             else:
-                pygame.draw.circle(display_surface, green, [X // 2, Y // 2], 40)  # fixation yellow
+                pygame.draw.circle(display_surface, green, [X // 2, Y // 2], 40) 
                 pygame.display.update()
         else :  # wrong prediction !
+            # Turn target red
             if target == 0:
-                pygame.draw.circle(display_surface, red, [X // 2, Y // 2], 40) # fixation yellow
-                pygame.draw.circle(display_surface, red, (535, 400), 100) # mark target
+                pygame.draw.circle(display_surface, red, [X // 2, Y // 2], 40) 
+                pygame.draw.circle(display_surface, red, (535, 400), 100)
                 display_surface.blit(left_arr, (471, 336))
                 pygame.display.update()
             elif target == 1:
-                pygame.draw.circle(display_surface, red, [X // 2, Y // 2], 40)  # fixation yellow
-                pygame.draw.circle(display_surface, red, (1065, 400), 100) # mark target
+                pygame.draw.circle(display_surface, red, [X // 2, Y // 2], 40)  
+                pygame.draw.circle(display_surface, red, (1065, 400), 100) 
                 display_surface.blit(right_arr, (1001, 336))
                 pygame.display.update()
             elif target == 2:
-                pygame.draw.circle(display_surface, red, [X // 2, Y // 2], 40)  # fixation yellow
-                pygame.draw.circle(display_surface, red, (535, 400), 100)  # mark target
-                pygame.draw.circle(display_surface, red, (1065, 400), 100)  # mark target
+                pygame.draw.circle(display_surface, red, [X // 2, Y // 2], 40)  
+                pygame.draw.circle(display_surface, red, (535, 400), 100)  
+                pygame.draw.circle(display_surface, red, (1065, 400), 100)  
                 display_surface.blit(left_arr, (471, 336))
                 display_surface.blit(right_arr, (1001, 336))
                 pygame.display.update()
             else:
-                pygame.draw.circle(display_surface, red, [X // 2, Y // 2], 40)  # fixation yellow
+                pygame.draw.circle(display_surface, red, [X // 2, Y // 2], 40)  
                 pygame.display.update()
 
         injectERP(amp=1)
@@ -295,7 +297,7 @@ def run_feedback(nSequences, nBlock, trialDuration, feedbackDuration, intertrial
 verb = 0
 nSymbols = 2
 nSequences = 2 # a bit more data to be on the safe side
-nBlock = 1  # 10; # number of stim blocks to use
+nBlock = 1  # number of stim blocks to use
 trialDuration = 3
 feedbackDuration = 2
 baselineDuration = 1

@@ -48,7 +48,7 @@ Now you should see how matlab starts and you are asked to select the cap configu
 
 If everything is correct you should see the following screen on the matlab program
 
-![](https://raw.githubusercontent.com/JoseReyL/BCI-project/master/channels.png)
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/channels.png?raw=true)
 
 Now you can run the project
 
@@ -77,6 +77,41 @@ Values: 0 - left, 1 - right, 2 - to select the option
 Once you have selected an option, it will be coloured in green. Then, normally the error potential classifier is evoked. To send an event manuaally, the event type is *errp.prediction* and the values are 0 - mistake (reject the selection) and 1 - select the option. If you reject the selection, you will keep selecting from the options on the current screen. 
 
 
+## Use of the program
+
+### Main menu
+
+After `interface_imagined.py` is run, you should see the initial menu of the program
+
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/Initial.jpeg?raw=true)
+
+
+
+
+
+### Navigation
+
+Now you can start imagining the movement of your hands, to navigate the menu, just imagine the movement of the right hand, and the yellow dot will move.
+
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/Initial.jpeg?raw=true)
+
+<p align="center">
+  <img width="300" height="300" src="https://github.com/JoseReyL/BCI-project/blob/master/screenshots/right.png?raw=true">
+</p>
+
+And the selected option is now the telephone.
+
+![](https://raw.githubusercontent.com/JoseReyL/BCI-project/master/screenshots/Telephone.jpeg)
+
+### Selection
+
+In order to select an option, you should imagine the movement of both hands
+
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/Telephone.jpeg?raw=true)
+
+
+
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/Telephone%20select.jpeg?raw=true)
 
 ## Authors
 **Jose Rey Lopez**  

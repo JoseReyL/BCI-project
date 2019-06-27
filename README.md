@@ -122,6 +122,30 @@ If no mistakes were found, it will proceed to the selected menu.
 
 ![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/telephone_menu.png?raw=true)
 
+
+## Options
+
+As was shown in the former section, in the initial menu 4 options were offered (navigation, telephone, TV and SOS)
+
+After selection any of the options a menu will be displayed, here the options are presented:
+
+### Navigation
+
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/movement_menu.png?raw=true)
+
+### Telephone & TV
+
+They both have the same structure, 3 options, SOS and home, so they share the same option screen
+
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/telephone_menu.png?raw=true)
+
+### SOS
+
+This screen allows the user to ask for help, because it's hungry, in pain, or needs to go to the bathroom. It's also accesible from every screen of the program to make the access to this option easier
+
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/sos_menu.png?raw=true)
+
+
 ## Authors
 **Jose Rey Lopez**  
 **Lorenzo Valacchi**  

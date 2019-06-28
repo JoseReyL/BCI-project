@@ -23,7 +23,6 @@ import preproc
 data_folder = 'error_potentials'    # folder containing training data
 spatialfilter='car' #type of spatial filter
 freqbands    = [8, 10, 28, 30]  # frequency bands for the spectral filter
-
 cname = 'ErrP_clf_freq'    # name for the classifier
 treshold = 0.45619815088221327 # optimal threshold for the classifier (precomputed)
 

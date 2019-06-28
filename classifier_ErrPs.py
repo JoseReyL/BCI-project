@@ -68,7 +68,7 @@ while True:
         
         if verbose: print('Collecting data...')
 
-        data, events_im, stopevents, pending = bufhelp.gatherdata("errp.trigger",recording_lenght,[], milliseconds=True)
+        data, events, stopevents, pending = bufhelp.gatherdata("errp.trigger",recording_lenght,[], milliseconds=True)
 
         data = np.array(data)
 
@@ -115,15 +115,12 @@ while True:
         # DEBUG
         if verbose: print('Collecting data...')
 
-        data, events_im, stopevents, pending = bufhelp.gatherdata("errp.trigger",recording_lenght,[], milliseconds=True)
+        data, events, stopevents, pending = bufhelp.gatherdata("errp.trigger",recording_lenght,[], milliseconds=True)
 
         # get all event type labels
-        event_types = [e.type for e in events_im]
-        print(event_types)
-        # get all event values
-        event_values = [e.value[0] for e in events_im]
-        print(event_values)
-
+        event_types = [e.type for e in events]
+        
+        # Send artificial prediction
         bufhelp.sendEvent("errp.prediction",debug_predictions[0])
         print(debug_predictions[0])
         debug_predictions = debug_predictions[1:]

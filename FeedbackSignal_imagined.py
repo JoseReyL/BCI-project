@@ -20,23 +20,20 @@ ftc,hdr=bufhelp.connect()
 im_length = 3000
 classifier_right_name =  'classifier_right'
 classifier_left_name  =  'classifier_left'
-DEBUG = True    # True for debugging, False for real experiment
-n_symbols = 4   # 0 - left, 1 - right, 2 - both, 3 - none (no movement) 
+DEBUG = False    # True for debugging, False for real experiment
 debug_predictions = [0,0,0,0,0,0,0,3,0,1,2,3,0,1,2,3]
 
 ##### Loadind classifier pickle file ######
 
-f = open(os.path.join(pydir, classifier_right_name + '.pk' ), 'rb')
-classifier_right = pickle.load(f)
+if not DEBUG:
+    
+    f = open(os.path.join(pydir, classifier_right_name + '.pk' ), 'rb')
+    classifier_right = pickle.load(f)
 
-if verbose: print('--right')
+    f = open(os.path.join(pydir, classifier_left_name + '.pk' ), 'rb')
+    classifier_left = pickle.load(f)
 
-f = open(os.path.join(pydir, classifier_left_name + '.pk' ), 'rb')
-classifier_left = pickle.load(f)
-
-if verbose: print('--left')
-
-if verbose: print('Classifiers loaded #')
+    print('Classifiers loaded #')
 
 # invert the value dict to get a key->value map
 ivaluedict = { k:v for k,v in valuedict.items() }

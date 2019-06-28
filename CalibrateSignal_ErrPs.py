@@ -12,8 +12,9 @@ import pickle
 # connect to the buffer, if no-header wait until valid connection
 ftc,hdr=bufhelp.connect()
 
-trialLength = 2000
-dname  ='training_data_ErrPs'
+### Variables ###
+trialLength = 2000  # time (ms) lenght of recording for each event
+dname  ='training_data_ErrPs'   # name for the data dile created 
 
 
 # grab data after every t:'stimulus.start_feedback' event until we get a {t:'stimulus.training' v:'end'} event

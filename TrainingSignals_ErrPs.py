@@ -23,10 +23,9 @@ import preproc
 data_folder = 'error_potentials'    # folder containing training data
 spatialfilter='car' #type of spatial filter
 freqbands    = [8, 10, 28, 30]  # frequency bands for the spectral filter
-cname_time = 'ErrP_clf_time'    # name of the time classifier
-treshold_time = 0.4431697721955611 # optimal threshold for the time classifier (precomputed)
-cname_freq = 'ErrP_clf_freq'    # name for the frequency classifier
-treshold_freq = 0.45619815088221327 # optimal threshold for the frequency classifier (precomputed)
+
+cname = 'ErrP_clf_freq'    # name for the classifier
+treshold = 0.45619815088221327 # optimal threshold for the classifier (precomputed)
 
 
 # grouping all the ErrPs data files
@@ -93,28 +92,7 @@ y_b = np.zeros((len(bad_errp),),dtype=int)
 y = np.concatenate((y_g, y_b), axis=0)
 
 
-## Time features - classifiers
-
-#reshape data to be in trials x features
-X_train_2d = np.reshape(all_Data,(all_Data.shape[0],all_Data.shape[1]*all_Data.shape[2]))
-
-# normalizer
-scaler_time = preprocessing.StandardScaler()
-
-scaler_time.fit(X_train_2d)
-
-clsfr_time = sklearn.linear_model.RidgeCV(store_cv_values=True)
-
-clsfr_time.fit(scaler_time.transform(X_train_2d),y)
-
-# save the trained classifer and normalizer
-print('Saving clsfr to : %s'%(cname+'.pk'))
-pickle.dump({'classifier':clsfr_time,'spatialfilter':spatialfilter,'freqbands':freqbands,'goodch':goodch,'treshold':treshold_time},open(cname_time+'.pk','wb'))
-pickle.dump({'normalizer':scaler_time},open(cname_time + '_Norm.pk','wb'))
-
-
-
-## Power spectral density features - classifiers
+## Power spectral density features - RidgeCV
 
 fs = 250    # sampling frequency
 
@@ -146,5 +124,5 @@ clsfr_f.fit(scaler_f.transform(X_train_2d),y)
 
 # save the trained classifer
 print('Saving clsfr to : %s'%(cname+'.pk'))
-pickle.dump({'classifier':clsfr_f,'spatialfilter':spatialfilter,'freqbands':freqbands,'goodch':goodch, 'treshold':treshold_freq},open(cname_freq+'.pk','wb'))
-pickle.dump({'normalizer':scaler_f},open(cname_freq + '_Norm.pk','wb'))
+pickle.dump({'classifier':clsfr_f,'spatialfilter':spatialfilter,'freqbands':freqbands,'goodch':goodch, 'treshold':treshold},open(cname+'.pk','wb'))
+pickle.dump({'normalizer':scaler_f},open(cname + '_Norm.pk','wb'))

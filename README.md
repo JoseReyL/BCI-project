@@ -40,13 +40,17 @@ To collect the signals in the computer is necessary to turn on and connect the t
 
 4. Run on terminal `buffer_bci-master/dataAcq/startMobitaAutoConnect.bat`
 
-5. Run on terminal `buffer_bci-master/dataAcq/startSigViewer.bat`
+5. The program will ask you to type what version of the mobita device is being used, it gives you options asociated with the serial number in the back. Type the right one.
+
+6. Run on terminal `buffer_bci-master/dataAcq/startSigViewer.bat`
 
 Now you should see how matlab starts and you are asked to select the cap configuration 
 
-6. Select `cap_tmsi_mobita_32ch.txt`
+7. Select `cap_tmsi_mobita_32ch.txt`
 
-If everything is correct you should see the following screen on the matlab program
+If everything is correct you should see the cap configuration and the following screen on the matlab program
+
+![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/mobita_32.png)
 
 ![](https://github.com/JoseReyL/BCI-project/blob/master/screenshots/channels.png?raw=true)
 
